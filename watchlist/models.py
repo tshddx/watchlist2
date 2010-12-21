@@ -5,13 +5,13 @@ class Movie(models.Model):
     title = models.CharField(max_length=1000)
     release_date = models.DateField(null=True, blank=True)
     runtime = models.IntegerField(null=True, blank=True)
-    director = models.ForeignKey('Person', null=True)
+    director = models.ForeignKey('Person', null=True, blank=True)
     nationality = models.CharField(max_length=255, null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
     tmdb_id = models.CharField(max_length=255, null=True, blank=True)
     
     def year(self):
-        return self.release_date.year
+        return self.release_date.year if self.release_date else None
         
     def most_recent_viewing(self):
         return self.viewing_set.order_by('date')[0].date

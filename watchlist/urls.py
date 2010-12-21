@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from watchlist2.watchlist.models import *
 
-urlpatterns = patterns('watchlist2.watchlist.views.',
+urlpatterns = patterns('watchlist2.watchlist.views',
     url(r'^movie/$', 'movie_list', name="movie_list"),
     url(r'^movie/wishlist$', 'wish_list', name="wish_list"),
     url(r'^movie/search$', 'movie_search', name="movie_search"),
