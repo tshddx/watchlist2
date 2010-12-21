@@ -9,7 +9,11 @@
   <div class="span-5">
     <dl>
       <dt>themoviedb.org ID</dt>
-      <dd><a href="http://www.themoviedb.org/person/{{ person.tmdb_id }}">{{ person.tmdb_id }}</a></dd>
+      {% if person.tmdb_id %}
+        <dd><a href="http://www.themoviedb.org/person/{{ person.tmdb_id }}">{{ person.tmdb_id }}</a></dd>
+      {% else %}
+        <dd><i>Not Entered</i></dd>
+      {% endif %}
     </dl>
   </div>
   <div class="span-12 last">
@@ -29,5 +33,4 @@
       </tbody>
     </table>
   </div>
-  
-  {% endblock %}
+{% endblock %}

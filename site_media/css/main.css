@@ -118,4 +118,28 @@ div .result {
     padding-bottom: 1.45em;
     /* border: solid 2px #345F79; */
     background-color: #dddde3;
+    height: 200px;
+    overflow: hidden;
+}
+
+div .result p {
+    margin-bottom: 2px;
+}
+
+div .result input[type="submit"] {
+    width: 70px;
+    background-color: #F3F3F3;
+    border: 1px solid #E47B3D;
+    font-size: 75%;
+    margin-bottom: 2px;
+}
+
+div .result input[type="submit"]:hover {
+    background-color: #E4DAD4;
+    cursor: pointer;
+}
+
+div .result .thumbnail {
+    padding-top: 8px;
+    text-align: center;
 }

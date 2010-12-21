@@ -6,6 +6,7 @@ urlpatterns = patterns('watchlist2.watchlist.views',
     url(r'^movie/wishlist$', 'wish_list', name="wish_list"),
     url(r'^movie/search$', 'movie_search', name="movie_search"),
     # url(r'^movie/import$', 'movie_import', name="movie_import"),
+    url(r'^movie/(?P<tmdb_id>[0-9]*)$', 'movie_detail', name="movie_detail"),
     url(r'^movie/(?P<title>.*)$', 'movie_detail', name="movie_detail"),
     
     url(r'^person/$', 'person_list', name="person_list"),

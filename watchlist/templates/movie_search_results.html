@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Import Results
+    Search Results
 {% endblock %}
 
 
@@ -18,13 +18,26 @@
   <h2> Search Results </h2>
   {% for title, movie in movies %}
     <div class="results span-17 last">
-      <h3>Results for "{{ title }}"</h3>
+        <h3>Results for "{{ title }}"</h3>
       {% for result in movie %}
         <div class="span-5 {% if forloop.last %}last{% else %}append-1{% endif %}">
           <div class="padded result span-4">
-            <p style="font-weight: bold;">{{ result.name }} <br /> ({{ result.released }})</p>
+            {% if result.in_watchlist %}
+              <a href="{% url movie_detail result.id %}"><p style="font-weight: bold;">{{ result.name }}</p></a>
+            {% else %}
+              <p style="font-weight: bold;">{{ result.name }}</p>
+            {% endif %}
+            <p>({{ result.released }})</p>
+            <form method="post" action="">
+              {% csrf_token %}
+              <input type="hidden" name="tmdb_id" value="{{ result.id }}" />
+              <input type="submit" name="just-watched" value="Just Watched" />
+              <input type="submit" name="add-to-wish-list" value="+ Wish List" />
+            </form>
             {% if result.thumb %}
-              <img src="{{ result.thumb }}" alt="{{ result.name }} {{ result.released }} Poster" />
+              <div class="thumbnail">
+                <img src="{{ result.thumb }}" alt="{{ result.name }} {{ result.released }} Poster" />
+              </div>
             {% else %}
               <em> No poster </em>
             {% endif %}

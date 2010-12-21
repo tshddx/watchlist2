@@ -47,15 +47,18 @@
       
       <div id="sidebar" class="padded span-4 last push-1">
         {% block sidebar %}
-          <form>
-            <input type="text" />
-            <input type="submit" value="Search Movie" />
+          <form method="post" action="{% url movie_search %}">
+            {% csrf_token %}
+            <input type="text" name="query" />
+            <input type="submit" value="Search Movie" name="single-movie-search" />
           </form>
           <br />
+          {% comment %}
           <form>
             <input type="text" />
             <input type="submit" value="Search Person" />
           </form>
+          {% endcomment %}
         {% endblock %}
       </div>
 

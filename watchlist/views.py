@@ -19,9 +19,12 @@ def index(request):
     return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list}
     
 @render_to('movie_detail.html')
-def movie_detail(request, title):
-    movie = get_object_or_404(Movie, title=title)
-    viewings = movie.viewing_set.all()
+def movie_detail(request, title=None, tmdb_id=None):
+    if title:
+        movie = get_object_or_404(Movie, title=title)
+    elif tmdb_id:
+        movie = get_object_or_404(Movie, tmdb_id=tmdb_id)
+    viewings = movie.viewing_set.order_by('-date')
     return {'movie': movie, 'viewings': viewings}
     
 @render_to('person_detail.html')
@@ -47,16 +50,25 @@ def person_list(request):
    
 @render_to()
 def movie_search(request):
+    
+    def get_thumbnail(movie_result):
+        for image in movie_result['images']:
+            if image['type'] == 'poster':
+                return image['thumb']
+        return None
+
     if request.method == 'POST':
+        titles = []
         movies = []
-        movies_list = request.POST['movies_list']
-        for movie_title in [line for line in movies_list.splitlines() if line]:
+        if 'single-movie-search' in request.POST:
+            titles = [request.POST['query']]
+        else:
+            titles = [line for line in request.POST['movies_list'].splitlines() if line]
+        for movie_title in titles:
             results = tmdb.search(movie_title)[:3]
             for result in results:
-                for image in result['images']:
-                    if image['type'] == 'poster':
-                        result['thumb'] = image['thumb']
-                        break
+                result['thumb'] = get_thumbnail(result)
+                result['in_watchlist'] = Movie.objects.filter(tmdb_id=result['id']).count() != 0
             movies.append((movie_title, results))
         return {'movies': movies, 'TEMPLATE': 'movie_search_results.html'}
     return {'fun': 'fun', 'TEMPLATE': 'movie_search.html'}
