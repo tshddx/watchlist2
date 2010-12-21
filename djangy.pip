@@ -1,0 +1,5 @@
+Django==1.2.3
+South==0.7.3
+django-annoying==0.7.5
+django-extensions==0.6
+themoviedb==0.0.0
