@@ -5,7 +5,8 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Count
 from django import forms
-from tmdb_search import tmdb_search
+# from tmdb_search import tmdb_search
+from themoviedb import tmdb
 import csv
 from itertools import islice
 
@@ -50,7 +51,12 @@ def movie_search(request):
         movies = []
         movies_list = request.POST['movies_list']
         for movie_title in [line for line in movies_list.splitlines() if line]:
-            results = tmdb_search(movie_title, num_results=4)
+            results = tmdb.search(movie_title)[:3]
+            for result in results:
+                for image in result['images']:
+                    if image['type'] == 'poster':
+                        result['thumb'] = image['thumb']
+                        break
             movies.append((movie_title, results))
         return {'movies': movies, 'TEMPLATE': 'movie_search_results.html'}
     return {'fun': 'fun', 'TEMPLATE': 'movie_search.html'}

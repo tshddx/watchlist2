@@ -114,7 +114,7 @@ div .results {
     margin-bottom: 1.45em;
 }
 
-div .result .content {
+div .result {
     padding-bottom: 1.45em;
     /* border: solid 2px #345F79; */
     background-color: #dddde3;
