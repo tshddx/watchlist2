@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    All Movies
+{% endblock %}
+
+
+{% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2> Search </h2>
+        <p> Provide a list of movies, one per line, with the year optionally after the title.
+        <form action="{% url movie_search %}" method="post">
+            {% csrf_token %}
+            <textarea name="movies_list" id="movies_list"></textarea><br />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+thead th {
+    background-color: #345F79;
+    color: #f3f3f3;
+}
+
+tbody tr:nth-child(2n) td, tbody tr.even td {
+    background-color: #E0EBF2;
+}
+
+.padded {
+    padding: 20px;
+}
+
+/* .padded.prepend-1 { */
+/*     padding-left: 60px; */
+/* } */
+
+.test {
+    background-color: gray;
+}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+  All People
+{% endblock %}
+
+{% block content %}
+  <h2> People </h2>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Directed</th>
+    </thead>
+    <tbody>
+      {% for person in people %}
+        <tr>
+          <td> <a href="{{ person.get_absolute_url }}">{{ person.name }}</a> </td>
+          <!-- <td> <a href="{{ person.movie_set.get_absolute_url }}">{{ movie.director }}</a> </td> -->
+          <td>
+            {% for movie in person.movie_set.all %}
+              <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

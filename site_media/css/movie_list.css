@@ -1,0 +1,33 @@
+th.title {
+    width: 150px;
+}
+
+th.director {
+    width: 100px;
+}
+
+th.year {
+    width: 40px;
+}
+
+th.nationality {
+    width: 70px;
+}
+
+th.watched {
+    width: 70px;
+}
+
+th.viewings {
+    width: 60px;
+}
+
+th.over {
+    color: #FF982C;
+}
+
+th span.sort-arrows {
+    font-size: 11px;
+    font-size: 11px;
+    color: #8CA7B8;
+}

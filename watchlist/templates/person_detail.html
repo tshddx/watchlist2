@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ person.name }}
+{% endblock %}
+
+{% block content %}
+  <h2> {{ person.name }} </h2>
+  <div class="span-5">
+    <dl>
+      <dt>themoviedb.org ID</dt>
+      <dd><a href="http://www.themoviedb.org/person/{{ person.tmdb_id }}">{{ person.tmdb_id }}</a></dd>
+    </dl>
+  </div>
+  <div class="span-12 last">
+    <h3>Movies</h3>
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Viewings</th>
+      </thead>
+      <tbody>
+        {% for movie in movies %}
+          <tr>
+            <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
+            <td> {{ movie.viewing_set.count }} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  {% endblock %}

@@ -1,0 +1,121 @@
+body {
+    background-color: #1F3949;
+    color: #090909;
+}
+
+#wrapper {
+    width: 970px;
+    margin: auto;
+    /* border: 2px solid blue; */
+}
+
+#header h1 {
+    color: white;
+}
+
+#header h1 a {
+    color: white;
+    border-bottom-style: none;
+}
+
+#header h1 a:hover {
+    background-color: inherit;
+    color: #E45500;
+    border-bottom: solid 6px #036564;
+}
+
+
+#top-menu {
+    /*margin-bottom: 0.5em;
+    float: left;*/
+    float: right;
+}
+
+#top-menu ul {
+list-style-type: none;
+width: auto;
+position: relative;
+display: block;
+height: 33px;
+font-size: 18px;
+font-weight: bold;
+margin: 0;
+padding: 0;
+}
+
+#top-menu ul li {
+display: block;
+float: left;
+margin: 0;
+padding: 0;
+background-color: white;
+}
+
+#top-menu ul li a {
+float: left;
+color: #E45500;
+text-decoration: none;
+height: 24px;
+border-bottom-style: none;
+padding: 6px 10px;
+}
+
+#top-menu ul li a:hover, .current {
+color: #E45500;
+background-color: #036564;
+text-decoration: none;
+border-bottom-style: none;
+}
+
+#top-menu ul .current a {
+color: #fff;
+font-weight: 700;
+}
+
+div #main-content {
+    background-color: #f3f3f3;
+}
+
+div .content {
+    padding: 10px 20px 0px 10px;
+}
+
+div #sidebar {
+    background-color: #345F79;
+    color: #f3f3f3;
+}
+
+div #sidebar h2 {
+    color: inherit;
+}
+
+div #sidebar a {
+    color: white;
+    border-bottom: 1px solid #E45500;
+}
+
+div #sidebar a:hover {
+    background-color: #E45500;
+}
+
+a, a:visited {
+    color: #BF4700;
+    text-decoration: none;
+    /* border-bottom: 1px solid #E45500; */
+}
+
+a:hover {
+    color: #E45500;
+    background-color: #DCDCDC;
+    text-decoration: none;
+}
+
+div .results {
+    margin-bottom: 1.45em;
+}
+
+div .result .content {
+    padding-bottom: 1.45em;
+    /* border: solid 2px #345F79; */
+    background-color: #dddde3;
+}

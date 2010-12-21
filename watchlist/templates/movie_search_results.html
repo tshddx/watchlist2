@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Import Results
+{% endblock %}
+
+
+{% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2> Search Results </h2>
+    </div>
+    {% for title, movie in movies %}
+        <div class="results span-18 last">
+            <div class="content">
+                <h3>Results for "{{ title }}"</h3>
+            </div>
+            {% for result in movie %}
+                <div class="result span-4 {% if forloop.first %}prepend-1{% endif %} {% if forloop.last %}last{% endif %}">
+                    <div class="content">
+                        <p style="font-weight: bold;">{{ result.title }} <br /> ({{ result.year }})</p>
+                        {% if result.poster_thumb %}
+                            <img src="{{ result.poster_thumb }}" alt="{{ result.title }} {{ result.year }} Poster" />
+                        {% else %}
+                            <em> No poster </em>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <hr />
+    {% endfor %}
+{% endblock %}
+

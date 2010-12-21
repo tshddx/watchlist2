@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Import Results
+{% endblock %}
+
+
+{% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2> Import Results </h2>
+    </div>
+    {% for title, year, view_date, results in movies %}
+        <div class="results span-18 last">
+            <div class="content">
+                <h3>"{{ title }}" {{ year }}</h3>
+            </div>
+            <div class="span-4 prepend-1">
+              <div class="content">
+                <p>Watched {{ view_date }}</p>
+                <p>Choose a movie</p>
+                <a href="" class="ajax-button">Save</a>
+                <form>
+                  <input type="radio" name="test" value="1">hi </input>
+                  <input type="radio" name="test" value="2">there </input>
+                  <input type="radio" name="test" value="3">buddy </input>
+                </form>
+              </div>
+            </div>
+            {% for result in results %}
+                <div class="result span-4 {% if forloop.last %}last{% endif %}">
+                    <div class="content">
+                        <p style="font-weight: bold;">{{ result.title }} <br /> ({{ result.year }})</p>
+                        {% if result.poster_thumb %}
+                            <img src="{{ result.poster_thumb }}" alt="{{ result.title }} {{ result.year }} Poster" />
+                        {% else %}
+                            <em> No poster </em>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <hr />
+    {% endfor %}
+{% endblock %}
+

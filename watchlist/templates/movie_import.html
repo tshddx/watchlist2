@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    All Movies
+{% endblock %}
+
+
+{% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2> Import </h2>
+        <p> Provide a comma-separated values file containing movie and viewing data.
+        <form action="{% url movie_import %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+{% endblock %}

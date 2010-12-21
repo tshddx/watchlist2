@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ movie.title }}
+{% endblock %}
+
+{% block content %}
+  <h2> {{ movie.title }} </h2>
+  <div class="span-5">
+      <dl>
+        <dt>Released</dt>
+        <dd>{{ movie.release_date.year }} ({{ movie.nationality }})</dd>
+        <dt>Director</dt>
+        <dd><a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a></dd>
+        <dt>Nationality</dt>
+        <dd>{{ movie.nationality }}</dd>
+        <dt>Runtime</dt>
+        <dd>{{ movie.runtime }} minutes</dd>
+        <dt>Comments</dt>
+        <dd>{{ movie.comments|default:"None" }}</dd>
+      </dl>
+  </div>
+  <div class="span-12 last">
+      <h3>Viewings</h3>
+      <table>
+        <thead>
+          <th>Date</th>
+          <th>Notes</th>
+        </thead>
+        <tbody>
+          {% for viewing in viewings %}
+            <tr>
+              <td> {{ viewing.date }} </td>
+              <td> {{ viewing.notes|default:"None" }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+  
+  {% endblock %}

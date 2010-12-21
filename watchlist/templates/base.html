@@ -1,0 +1,81 @@
+<html>
+  <head> <title> Movie Watchlist | {% block title %} {% endblock %} </title>
+
+  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/blueprint/screen.css" rel="stylesheet" />
+  <link media="print" type="text/css" href="{{ MEDIA_URL }}css/blueprint/print.css" rel="stylesheet" />
+  <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/blueprint_overrides.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/main.css" rel="stylesheet" />
+
+  {% block css %}
+  {% endblock %}
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+
+  {% block javascript %}
+  {% endblock %}
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="span-10 prepend-top">
+        <div id="header">
+          <h1><a href="{% url movies_index %}"> Movie Watchlist </a></h1>
+        </div>
+      </div>
+      <div class="span-8 prepend-top last">
+        <div id="top-menu">
+          <ul>
+            <li><a href="{% url movie_list %}"> movies </a>
+            <li><a href="{% url person_list %}"> people </a>
+            <li><a href="{% url wish_list %}"> wish list </a>
+          </ul>
+        </div>
+      </div>
+
+      {% comment %}
+        The main-content div is 18 grids wide (the .padded class adds 1 to its width, see blueprint_overrides.css).
+        However, remember that you really only have 17 gridths in templates that extend this one.
+      {% endcomment %}
+      <div id="main-content" class="padded span-17">
+        {% block content %}
+          <h2> Main content </h2>
+        {% endblock %}
+      </div>
+      
+      <div id="sidebar" class="padded span-4 last push-1">
+        {% block sidebar %}
+          <form>
+            <input type="text" />
+            <input type="submit" value="Search Movie" />
+          </form>
+          <br />
+          <form>
+            <input type="text" />
+            <input type="submit" value="Search Person" />
+          </form>
+        {% endblock %}
+      </div>
+
+      {% comment %}
+        <div class="span-18">
+        <h2> span-18 normal div here </h2>
+      </div>
+      <div class="span-5 last prepend-1">
+        <h5> span-5 last prepend-1 div here </h5>
+      </div>
+
+      <div class="span-17 box">
+        <h2> span-17 box div here </h2>
+      </div>
+      <div class="span-5 last prepend-1">
+        <h5> span-5 last prepend-1 div here </h5>
+      </div>
+      {% endcomment %}
+
+    </div>
+  </body>
+
+</html>

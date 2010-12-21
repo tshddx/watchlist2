@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <h2> Recent Viewings </h2>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Year</th>
+            <th>Nationality</th>
+            <th>Watched</th>
+            <th>Views</th>
+        </thead>
+        <tbody>
+            {% for viewing in object_list %}
+                <tr>
+                    <td> {{ viewing.movie.title }} </td>
+                    <td> {{ viewing.movie.director }} </td>
+                    <td> {{ viewing.movie.year }} </td>
+                    <td> {{ viewing.movie.nationality }} </td>
+                    <td> {{ viewing.date }} </td>
+                    <td> {{ viewing.movie.num_views }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
