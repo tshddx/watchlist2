@@ -8,7 +8,7 @@ tbody tr:nth-child(2n) td, tbody tr.even td {
 }
 
 .padded {
-    padding: 20px;
+    padding: 8px 20px 8px 20px;
 }
 
 /* .padded.prepend-1 { */
