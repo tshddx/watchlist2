@@ -16,7 +16,10 @@ class Movie(models.Model):
         return self.release_date.year if self.release_date else None
         
     def most_recent_viewing(self):
-        return self.viewing_set.order_by('date')[0].date
+        try:
+            return self.viewing_set.order_by('date')[0].date
+        except IndexError:
+            return None
         
     def num_viewings(self):
         return self.viewing_set.count()
