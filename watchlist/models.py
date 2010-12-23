@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+import datetime
 from themoviedb import tmdb
 import tmdb_person
 
@@ -20,9 +20,15 @@ class Movie(models.Model):
             return self.viewing_set.order_by('date')[0].date
         except IndexError:
             return None
-        
+
     def num_viewings(self):
         return self.viewing_set.count()
+
+    def add_viewing(self, date=None):
+        if not date:
+            self.viewing_set.create(date=datetime.date.today())
+        else:
+            self.viewing_set.create(date=date)
 
     @classmethod
     def movie_from_tmdb_id(cls, tmdb_id):
@@ -39,7 +45,7 @@ class Movie(models.Model):
             year = int(date_string[0:4])
             month = int(date_string[5:7])
             day = int(date_string[8:10])
-            movie.release_date = date(year, month, day)
+            movie.release_date = datetime.date(year, month, day)
             movie.runtime = int(result['runtime'])
             director_id = int(result['cast']['director'][0]['id'])
             director = Person.person_from_tmdb_id(director_id)
