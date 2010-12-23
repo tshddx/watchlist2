@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import date
+from themoviedb import tmdb
+import tmdb_person
 
 class Movie(models.Model):
     title = models.CharField(max_length=1000)
@@ -18,6 +20,29 @@ class Movie(models.Model):
         
     def num_viewings(self):
         return self.viewing_set.count()
+
+    @staticmethod
+    def movie_from_tmdb_id(tmdb_id):
+        """Return a Movie object with the specified tmdb_id. As a side effect, create the Movie in
+        the database and fill in its info from themoviedb if it doesn't already exist in the database."""
+        movie, created = Movie.objects.get_or_create(tmdb_id=tmdb_id)
+        # if the Movie is already in the db, we won't change it at all, the assumption
+        # being that all Movies will be added with this method so info will correct.
+        if created:
+            result = tmdb.getMovieInfo(tmdb_id)
+            movie.title = result['name']
+            # date_string is of the format "YYYY-MM-DD"
+            date_string = result['released']
+            year = int(date_string[0:4])
+            month = int(date_string[5:7])
+            day = int(date_string[8:10])
+            movie.release_date = date(year, month, day)
+            movie.runtime = int(result['runtime'])
+            director_id = int(result['cast']['director'][0]['id'])
+            director = Person.person_from_tmdb_id(director_id)
+            movie.director = director
+            movie.save()
+        return movie
     
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.year())
@@ -44,6 +69,19 @@ class Viewing(models.Model):
 class Person(models.Model):
     name = models.CharField(max_length=1000)
     tmdb_id = models.CharField(max_length=255, null=True, blank=True)
+
+    @staticmethod
+    def person_from_tmdb_id(tmdb_id):
+        """Return a Person object with the specified tmdb_id. As a side effect, create the Person in
+        the database and fill in their name from themoviedb if they don't already exist in the database."""
+        person, created = Person.objects.get_or_create(tmdb_id=tmdb_id)
+        # if the Person is already in the db, we won't change it at all, the assumption
+        # being that all Persons will be added with this method so info will always correct.
+        if created:
+            result = tmdb_person.getPersonInfo(tmdb_id)
+            person.name = result['name']
+            person.save()
+        return person
     
     def __unicode__(self):
         return self.name
