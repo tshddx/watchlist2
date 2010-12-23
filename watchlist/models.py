@@ -24,11 +24,11 @@ class Movie(models.Model):
     def num_viewings(self):
         return self.viewing_set.count()
 
-    @staticmethod
-    def movie_from_tmdb_id(tmdb_id):
+    @classmethod
+    def movie_from_tmdb_id(cls, tmdb_id):
         """Return a Movie object with the specified tmdb_id. As a side effect, create the Movie in
         the database and fill in its info from themoviedb if it doesn't already exist in the database."""
-        movie, created = Movie.objects.get_or_create(tmdb_id=tmdb_id)
+        movie, created = cls.objects.get_or_create(tmdb_id=tmdb_id)
         # if the Movie is already in the db, we won't change it at all, the assumption
         # being that all Movies will be added with this method so info will correct.
         if created:
@@ -73,11 +73,11 @@ class Person(models.Model):
     name = models.CharField(max_length=1000)
     tmdb_id = models.CharField(max_length=255, null=True, blank=True)
 
-    @staticmethod
-    def person_from_tmdb_id(tmdb_id):
+    @classmethod
+    def person_from_tmdb_id(cls, tmdb_id):
         """Return a Person object with the specified tmdb_id. As a side effect, create the Person in
         the database and fill in their name from themoviedb if they don't already exist in the database."""
-        person, created = Person.objects.get_or_create(tmdb_id=tmdb_id)
+        person, created = cls.objects.get_or_create(tmdb_id=tmdb_id)
         # if the Person is already in the db, we won't change it at all, the assumption
         # being that all Persons will be added with this method so info will always correct.
         if created:
