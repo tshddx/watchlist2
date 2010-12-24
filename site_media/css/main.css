@@ -164,3 +164,7 @@ span.person-name {
 abbr {
     border-bottom: 1px dotted #DFAC8F;
 }
+
+li {
+    margin-bottom: 1em;
+}

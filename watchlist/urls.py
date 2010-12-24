@@ -13,5 +13,12 @@ urlpatterns = patterns('watchlist2.watchlist.views',
     url(r'^person/search$', 'person_search', name="person_search"),
     url(r'^person/(?P<name>.*)$', 'person_detail', name="person_detail"),
     
+                       
     url(r'^$', 'index', name="movies_index"),
 )
+
+urlpatterns += patterns('django.views.generic',
+    url(r'^credits.php$', 'simple.direct_to_template', {'template': 'credits.html'}, name="credits"),
+                        
+)
+
