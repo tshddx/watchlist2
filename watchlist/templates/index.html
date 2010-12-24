@@ -31,24 +31,7 @@
 
   <hr />
   
-  <div class="span-6 append-1">
-    <h3> Favorite Directors </h3>
-    <table>
-      <thead>
-        <th>Director</th>
-        <th>No.</th>
-      </thead>
-      <tbody>
-        {% for director in favorite_directors %}
-          <tr>
-            <td> <a href="{{ director.0.get_absolute_url }}">{{ director.0 }}</a> </td>
-            <td> {{ director.1 }} </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  <div class="span-10 last">
+  <div class="span-11">
     <h3> Wish List </h3>
     <table>
       <thead>
@@ -62,6 +45,23 @@
             <td> <a href="{{ movie.get_absolute_url }}">{{ movie.as_abbr|safe }}</a> </td>
             <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
             <td> {{ movie.release_date }} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="span-5 append-1 last">
+    <h3> Favorite Directors </h3>
+    <table>
+      <thead>
+        <th>Director</th>
+        <th>No.</th>
+      </thead>
+      <tbody>
+        {% for director in favorite_directors %}
+          <tr>
+            <td> <a href="{{ director.0.get_absolute_url }}">{{ director.0 }}</a> </td>
+            <td> {{ director.1 }} </td>
           </tr>
         {% endfor %}
       </tbody>
