@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ movie.title }}
+  {{ movie.title }}
 {% endblock %}
 
 {% block content %}
@@ -21,6 +21,7 @@
       </dl>
   </div>
   <div class="span-12 last">
+    {% if viewings %}
       <h3>Viewings</h3>
       <table>
         <thead>
@@ -36,6 +37,9 @@
           {% endfor %}
         </tbody>
       </table>
+    {% else %}
+      <p>This movie is on your wish list.</p>
+    {% endif %}
   </div>
   
   {% endblock %}
