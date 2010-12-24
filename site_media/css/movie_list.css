@@ -1,25 +1,25 @@
-th.title {
-    width: 150px;
-}
+/* th.title { */
+/*     max-width: 150px; */
+/* } */
 
-th.director {
-    width: 100px;
-}
+/* th.director { */
+/*     max-width: 110px; */
+/* } */
 
 th.year {
-    width: 40px;
+    max-width: 70px;
 }
 
 th.nationality {
-    width: 70px;
+    max-width: 70px;
 }
 
 th.watched {
-    width: 70px;
+    max-width: 70px;
 }
 
 th.viewings {
-    width: 60px;
+    max-width: 70px;
 }
 
 th.over {

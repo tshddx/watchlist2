@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_without_sidebar.html" %}
 
 {% block title %}
   All Movies
@@ -22,9 +22,9 @@
         <th class="title">Title</th>
         <th class="director">Director</th>
         <th class="year">Year</th>
-        <th class="nationality">Nationality</th>
-        <th class="watched">Watched</th>
-        <th class="viewings">Viewings</th>
+        <th class="nationality">Nation.</th>
+        <th class="watched">Date</th>
+        <th class="viewings">No.</th>
       </thead>
       <tbody>
         {% for viewing in viewings %}
@@ -44,11 +44,10 @@
   {% endif %}
 {% endblock %}
 
+{% comment %}
 {% block sidebar %}
   <ul>
-    {% comment %}
-    <li><a href="{% url movie_import %}">Import CSV</a></li>
-    {% endcomment %}
     <li><a href="{% url movie_search %}">Search for Movies</a></li>
   </ul>
 {% endblock %}
+{% endcomment %}

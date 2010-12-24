@@ -35,56 +35,8 @@
         </div>
       </div>
 
-      {% comment %}
-        The main-content div is 18 grids wide (the .padded class adds 1 to its width, see blueprint_overrides.css).
-        However, remember that you really only have 17 gridths in templates that extend this one.
-      {% endcomment %}
-      <div id="main-content" class="padded span-17">
-        {% block content %}
-          <h2> Main content </h2>
-        {% endblock %}
-      </div>
-      
-      <div id="sidebar" class="padded span-4 last push-1">
-        {% block sidebar %}
-          <form method="post" action="{% url movie_search %}">
-            {% csrf_token %}
-            <input type="text" name="query" />
-            <input type="submit" value="Search Movie" name="single-movie-search" />
-          </form>
-          <br />
-          <form method="post" action="{% url person_search %}">
-            {% csrf_token %}
-            <input type="text" name="query" />
-            <input type="submit" value="Search Person" name="person-search" />
-          </form>
-          {% comment %}
-          <form>
-            <input type="text" />
-            <input type="submit" value="Search Person" />
-          </form>
-          {% endcomment %}
-        {% endblock %}
-      </div>
-
-      <div id="footer" class="padded span-17 last append-top">
-        <p class="footer-line">by <a href="http://tshaddox.com">Thomas Shaddox</a>. <a href="">Credits</a>.</p>
-
-      {% comment %}
-        <div class="span-18">
-        <h2> span-18 normal div here </h2>
-      </div>
-      <div class="span-5 last prepend-1">
-        <h5> span-5 last prepend-1 div here </h5>
-      </div>
-
-      <div class="span-17 box">
-        <h2> span-17 box div here </h2>
-      </div>
-      <div class="span-5 last prepend-1">
-        <h5> span-5 last prepend-1 div here </h5>
-      </div>
-      {% endcomment %}
+      {% block content-area %}
+      {% endblock %}
 
     </div>
   </body>

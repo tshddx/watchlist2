@@ -114,13 +114,13 @@ class Person(models.Model):
         return self.movie_set.count()
 
     def short_name(self):
-        if len(self.name) >= 15:
+        if len(self.name) >= 20:
             return "%s. %s" % (self.name[0], self.name.split()[-1])
         else:
             return self.name
 
     def as_abbr(self):
-        if len(self.name) >= 15:
+        if len(self.name) >= 20:
             return '<abbr title="%s"> %s </abbr>' % (self.name, self.short_name())
         else:
             return self.name

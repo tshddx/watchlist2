@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_with_sidebar.html" %}
 
 {% block title %}
   Home
@@ -18,8 +18,8 @@
     <tbody>
       {% for viewing in recent_viewings %}
         <tr>
-          <td> <a href="{{ viewing.movie.get_absolute_url }}">{{ viewing.movie.title }}</a> </td>
-          <td> <a href="{{ viewing.movie.director.get_absolute_url }}">{{ viewing.movie.director }}</a> </td>
+          <td> <a href="{{ viewing.movie.get_absolute_url }}">{{ viewing.movie.as_abbr|safe }}</a> </td>
+          <td> <a href="{{ viewing.movie.director.get_absolute_url }}">{{ viewing.movie.director.as_abbr|safe }}</a> </td>
           <td> {{ viewing.movie.year }} </td>
           <td> {{ viewing.movie.nationality }} </td>
           <td> {{ viewing.date }} </td>
@@ -43,7 +43,7 @@
         {% for movie in wish_list %}
           <tr>
             <td> <a href="{{ movie.get_absolute_url }}">{{ movie.as_abbr|safe }}</a> </td>
-            <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
+            <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director.as_abbr|safe }}</a> </td>
             <td> {{ movie.release_date }} </td>
           </tr>
         {% endfor %}
