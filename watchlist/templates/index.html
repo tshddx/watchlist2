@@ -29,6 +29,8 @@
     </tbody>
   </table>
 
+  <hr />
+  
   <div class="span-6 append-1">
     <h3> Favorite Directors </h3>
     <table>
@@ -57,7 +59,7 @@
       <tbody>
         {% for movie in wish_list %}
           <tr>
-            <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
+            <td> <a href="{{ movie.get_absolute_url }}">{{ movie.as_abbr|safe }}</a> </td>
             <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
             <td> {{ movie.release_date }} </td>
           </tr>

@@ -55,6 +55,18 @@ class Movie(models.Model):
                 pass
             movie.save()
         return movie
+
+    def short_title(self):
+        if len(self.title) <= 30:
+            return self.title
+        else:
+            return "%s ... %s" % (self.title[:12], self.title[-12:])
+
+    def as_abbr(self):
+        if len(self.title) <= 30:
+            return self.title
+        else:
+            return '<abbr title="%s"> %s </abbr>' % (self.title, self.short_title())
     
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.year())
