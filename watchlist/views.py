@@ -3,7 +3,7 @@ from annoying.decorators import render_to
 from operator import itemgetter
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from django.db.models import Count
+from django.db.models import Count, Q
 from django import forms
 # from tmdb_search import tmdb_search
 from themoviedb import tmdb
@@ -92,6 +92,19 @@ def movie_search(request):
             movies.append((movie_title, results))
         return {'movies': movies, 'TEMPLATE': 'movie_search_results.html'}
     return {'fun': 'fun', 'TEMPLATE': 'movie_search.html'}
+
+@render_to('person_search_results.html')
+def person_search(request):
+    if request.method == 'POST' and 'person-search' in request.POST:
+        terms = request.POST['query'].split()
+        queries = []
+        for term in terms:
+            queries.append(Q(name__icontains=term))
+        if queries:
+            people = Person.objects.filter(reduce(lambda x, y: x & y, queries))
+        else:
+            people = None
+    return {'people': people, 'query': request.POST['query']}
 
 # @render_to()
 # def movie_import(request):

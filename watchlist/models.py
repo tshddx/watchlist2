@@ -95,8 +95,14 @@ class Person(models.Model):
             person.save()
         return person
     
+    def num_movies(self):
+        return self.movie_set.count()
+
     def __unicode__(self):
         return self.name
+
+    def as_a(self):
+        return '<a href="%s"> %s </a>' % (self.get_absolute_url(), self.name)
         
     @models.permalink
     def get_absolute_url(self):

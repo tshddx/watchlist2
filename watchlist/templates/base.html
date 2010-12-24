@@ -53,6 +53,11 @@
             <input type="submit" value="Search Movie" name="single-movie-search" />
           </form>
           <br />
+          <form method="post" action="{% url person_search %}">
+            {% csrf_token %}
+            <input type="text" name="query" />
+            <input type="submit" value="Search Person" name="person-search" />
+          </form>
           {% comment %}
           <form>
             <input type="text" />

@@ -10,6 +10,7 @@ urlpatterns = patterns('watchlist2.watchlist.views',
     url(r'^movie/(?P<title>.*)$', 'movie_detail', name="movie_detail"),
     
     url(r'^person/$', 'person_list', name="person_list"),
+    url(r'^person/search$', 'person_search', name="person_search"),
     url(r'^person/(?P<name>.*)$', 'person_detail', name="person_detail"),
     
     url(r'^$', 'index', name="movies_index"),

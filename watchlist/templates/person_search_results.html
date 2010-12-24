@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+
+{% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block content %}
+  <h2> Search Results </h2>
+    <div class="results span-17 last">
+      {% if people %}
+        <h3>Results for "{{ query }}"</h3>
+        {% for person in people %}
+          <p> <span class="person-name"> {{ person.as_a|safe }} </span> ({{ person.num_movies }} movie in Watchlist)</p>
+        {% endfor %}
+      {% else %}
+        <h3><i>No results for "{{ query }}"</i></h3>
+      {% endif %}
+    </div>
+    <hr />
+{% endblock %}
+
