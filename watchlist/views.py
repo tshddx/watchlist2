@@ -20,6 +20,17 @@ def index(request):
     
 @render_to('movie_detail.html')
 def movie_detail(request, title=None, tmdb_id=None):
+    # If POST, potentially creates a new Movie object:
+    if request.method == 'POST' and tmdb_id:
+        if 'just-watched' in request.POST:
+            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
+            movie.add_viewing()
+        elif 'add-to-wish-list' in request.POST:
+            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
+        else:
+            raise Exception("If posting to movie_detail, must send either 'just-watched' or 'add-to-wish-list'.")
+        movie.save()
+        return HttpResponseRedirect(movie.get_absolute_url())
     if title:
         movie = get_object_or_404(Movie, title=title)
     elif tmdb_id:

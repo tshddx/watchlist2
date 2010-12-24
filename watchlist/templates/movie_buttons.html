@@ -1,8 +1,10 @@
-<form method="post" action="{% url movie_search %}">
-  {% csrf_token %}
-  <input type="hidden" name="tmdb_id" value="{{ result.id }}" />
-  <input type="submit" name="just-watched" value="Just Watched" />
-  {% if not in_db %}
-    <input type="submit" name="add-to-wish-list" value="+ Wish List" />
-  {% endif %}
-</form>
+<div class="movie-buttons">
+  <form method="post" action="{% url movie_detail tmdb_id=tmdb_id %}">
+    {% csrf_token %}
+    <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
+    <input type="submit" name="just-watched" value="Just Watched" />
+    {% if not in_db %}
+      <input type="submit" name="add-to-wish-list" value="+ Wish List" />
+    {% endif %}
+  </form>
+</div>

@@ -138,7 +138,7 @@ div .result p {
     margin-bottom: 2px;
 }
 
-div .result input[type="submit"] {
+div .movie-buttons input[type="submit"] {
     width: 70px;
     background-color: #F3F3F3;
     border: 1px solid #E47B3D;
@@ -146,7 +146,7 @@ div .result input[type="submit"] {
     margin-bottom: 2px;
 }
 
-div .result input[type="submit"]:hover {
+div .movie-buttons input[type="submit"]:hover {
     background-color: #E4DAD4;
     cursor: pointer;
 }

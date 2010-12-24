@@ -28,8 +28,10 @@
               <p style="font-weight: bold;">{{ result.name }}</p>
             {% endif %}
             <p>({{ result.released }})</p>
-            {% with result.in_watchlist as in_db %}
-              {% include "movie_buttons.html" %}
+            {% with result.id as tmdb_id %}
+              {% with result.in_watchlist as in_db %}
+                {% include "movie_buttons.html" %}
+              {% endwith %}
             {% endwith %}
             {% if result.thumb %}
               <div class="thumbnail">
