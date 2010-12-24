@@ -67,6 +67,16 @@ class Movie(models.Model):
             return '<abbr title="%s"> %s </abbr>' % (self.title, self.short_title())
         else:
             return self.title
+
+    def wrap_in_a(self, contents):
+        iconify = ' class="comments-icon"' if self.comments else ""
+        return '<a href="%s"%s> %s </a>' % (self.get_absolute_url(), iconify, contents)
+
+    def as_a(self):
+        return self.wrap_in_a(self.title)
+    
+    def as_abbreviated_a(self):
+        return self.wrap_in_a(self.as_abbr())
     
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.year())
@@ -128,11 +138,14 @@ class Person(models.Model):
     def __unicode__(self):
         return self.name
 
+    def wrap_in_a(self, contents):
+        return '<a href="%s"> %s </a>' % (self.get_absolute_url(), contents)
+
     def as_a(self):
-        if self.name:
-            return '<a href="%s"> %s </a>' % (self.get_absolute_url(), self.name)
-        else:
-            return self.name
+        return self.wrap_in_a(self.name)
+
+    def as_abbreviated_a(self):
+        return self.wrap_in_a(self.as_abbr())
         
     @models.permalink
     def get_absolute_url(self):

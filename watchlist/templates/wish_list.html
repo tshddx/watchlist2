@@ -17,8 +17,8 @@
       <tbody>
         {% for movie in wish_list %}
           <tr>
-            <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
-            <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
+            <td> {{ movie.as_a|safe }}</a> </td>
+            <td> {{ movie.director.as_a|safe }}</a> </td>
             <td> {{ movie.year }} </td>
             <td> {{ movie.nationality }} </td>
           </tr>

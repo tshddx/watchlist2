@@ -12,7 +12,7 @@
       {% if person.tmdb_id %}
         <dd><a href="http://www.themoviedb.org/person/{{ person.tmdb_id }}">{{ person.tmdb_id }}</a></dd>
       {% else %}
-        <dd><i>Not Entered</i></dd>
+        <dd>Not Entered</dd>
       {% endif %}
     </dl>
   </div>
@@ -27,7 +27,7 @@
         <tbody>
           {% for movie in movies %}
             <tr>
-              <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
+              <td> {{ movie.as_a|safe }} </td>
               <td> {{ movie.viewing_set.count }} </td>
             </tr>
           {% endfor %}

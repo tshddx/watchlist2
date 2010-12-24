@@ -19,7 +19,7 @@
     <tbody>
       {% for person in people %}
         <tr>
-          <td> <a href="{{ person.get_absolute_url }}">{{ person.name }}</a> </td>
+          <td> {{ person.as_a|safe }} </td>
           <td>
             {% with person.movie_set.all as movies %}
               {% for movie in movies|slice:"0:5" %}
