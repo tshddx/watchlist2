@@ -1,0 +1,554 @@
+[
+    {
+        "pk": 1, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Wes Anderson", 
+            "tmdb_id": "5655"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Woody Allen", 
+            "tmdb_id": "1243"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Alexander Mackendrick", 
+            "tmdb_id": "14566"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Jim Jarmusch", 
+            "tmdb_id": "4429"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "David Mamet", 
+            "tmdb_id": "1255"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Sidney Lumet", 
+            "tmdb_id": "39996"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Courtney Hunt", 
+            "tmdb_id": "64131"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Aki Kaurism\u00e4ki", 
+            "tmdb_id": "16767"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Duncan Jones", 
+            "tmdb_id": "81850"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Robert Bresson", 
+            "tmdb_id": "10346"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "John August", 
+            "tmdb_id": "1300"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Todd Phillips", 
+            "tmdb_id": "57130"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Ingmar Bergman", 
+            "tmdb_id": "6648"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Chris Kentis", 
+            "tmdb_id": "640"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Louis Malle", 
+            "tmdb_id": "15389"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Yasujir\u00f4 Ozu", 
+            "tmdb_id": "95501"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Steven Spielberg", 
+            "tmdb_id": "488"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Errol Morris", 
+            "tmdb_id": "18533"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Steven Soderbergh", 
+            "tmdb_id": "1884"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Ben Stiller", 
+            "tmdb_id": "7399"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "John Hamburg", 
+            "tmdb_id": "17871"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Mike Leigh", 
+            "tmdb_id": "65452"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Rian Johnson", 
+            "tmdb_id": "67367"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Noah Baumbach", 
+            "tmdb_id": "5656"
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Peter Weir", 
+            "tmdb_id": "2690"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Jonathan Demme", 
+            "tmdb_id": "16294"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Neill Blomkamp", 
+            "tmdb_id": "82194"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Mark Neveldine", 
+            "tmdb_id": "20193"
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Ron Howard", 
+            "tmdb_id": "6159"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Kathryn Bigelow", 
+            "tmdb_id": "14392"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Paul Greengrass", 
+            "tmdb_id": "25598"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Chris Columbus", 
+            "tmdb_id": "10965"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Alfonso Cuar\u00f3n", 
+            "tmdb_id": "11218"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Mike Newell", 
+            "tmdb_id": "10723"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "David Yates", 
+            "tmdb_id": "11343"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Sam Raimi", 
+            "tmdb_id": "7623"
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Judd Apatow", 
+            "tmdb_id": "41039"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Marc Webb", 
+            "tmdb_id": "87742"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Mike Judge", 
+            "tmdb_id": "17403"
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Luc Besson", 
+            "tmdb_id": "59"
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Quentin Tarantino", 
+            "tmdb_id": "138"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Kevin Macdonald", 
+            "tmdb_id": "17350"
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Jason Reitman", 
+            "tmdb_id": "52443"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Armando Iannucci", 
+            "tmdb_id": "88926"
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Roland Emmerich", 
+            "tmdb_id": "6046"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Bobcat Goldthwait", 
+            "tmdb_id": "95024"
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Boaz Yakin", 
+            "tmdb_id": "52358"
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Guy Ritchie", 
+            "tmdb_id": "956"
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Robert Kenner", 
+            "tmdb_id": "95687"
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "James McTeigue", 
+            "tmdb_id": "11266"
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Vincenzo Natali", 
+            "tmdb_id": "5877"
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Luke Greenfield", 
+            "tmdb_id": "65734"
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Clark Gregg", 
+            "tmdb_id": "9048"
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Matthew Vaughn", 
+            "tmdb_id": "957"
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Louis Leterrier", 
+            "tmdb_id": "18865"
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Karyn Kusama", 
+            "tmdb_id": "54025"
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Steve Shill", 
+            "tmdb_id": "80747"
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Roman Polanski", 
+            "tmdb_id": "3556"
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Ridley Scott", 
+            "tmdb_id": "578"
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Sydney Pollack", 
+            "tmdb_id": "2226"
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Richard Donner", 
+            "tmdb_id": "7187"
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Dean DeBlois", 
+            "tmdb_id": "69797"
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Debra Granik", 
+            "tmdb_id": "121873"
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "David Fincher", 
+            "tmdb_id": "7467"
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Henry Joost", 
+            "tmdb_id": "142272"
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Banksy", 
+            "tmdb_id": "131617"
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Edgar Wright", 
+            "tmdb_id": "11090"
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Martin Brest", 
+            "tmdb_id": "769"
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "watchlist.person", 
+        "fields": {
+            "name": "Christopher Nolan", 
+            "tmdb_id": "525"
+        }
+    }
+]
