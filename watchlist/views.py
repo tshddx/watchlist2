@@ -73,15 +73,6 @@ def movie_search(request):
         movies = []
         if 'single-movie-search' in request.POST:
             titles = [request.POST['query']]
-        elif 'just-watched' in request.POST:
-            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
-            movie.add_viewing()
-            movie.save()
-            return HttpResponseRedirect(movie.get_absolute_url())
-        elif 'add-to-wish-list' in request.POST:
-            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
-            movie.save()
-            return HttpResponseRedirect(movie.get_absolute_url())
         else:
             titles = [line for line in request.POST['movies_list'].splitlines() if line]
         for movie_title in titles:
