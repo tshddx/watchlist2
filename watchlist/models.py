@@ -129,7 +129,10 @@ class Person(models.Model):
         return self.name
 
     def as_a(self):
-        return '<a href="%s"> %s </a>' % (self.get_absolute_url(), self.name)
+        if self.name:
+            return '<a href="%s"> %s </a>' % (self.get_absolute_url(), self.name)
+        else:
+            return self.name
         
     @models.permalink
     def get_absolute_url(self):

@@ -11,7 +11,10 @@
         <dt>Released</dt>
         <dd>{{ movie.release_date }}</dd>
         <dt>Director</dt>
-        <dd><a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a></dd>
+        <dd>
+          {{ movie.director.as_a|safe|default:"None" }}
+        </dd>
+        </dd>
         <dt>Nationality</dt>
         <dd>{{ movie.nationality }}</dd>
         <dt>Runtime</dt>
