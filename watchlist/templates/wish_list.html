@@ -6,22 +6,26 @@
 
 {% block content %}
   <h2> Wish List </h2>
-  <table>
-    <thead>
-      <th>Title</th>
-      <th>Director</th>
-      <th>Year</th>
-      <th>Nationality</th>
-    </thead>
-    <tbody>
-      {% for movie in wish_list %}
-        <tr>
-          <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
-          <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
-          <td> {{ movie.year }} </td>
-          <td> {{ movie.nationality }} </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  {% if wish_list %}
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Year</th>
+        <th>Nationality</th>
+      </thead>
+      <tbody>
+        {% for movie in wish_list %}
+          <tr>
+            <td> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> </td>
+            <td> <a href="{{ movie.director.get_absolute_url }}">{{ movie.director }}</a> </td>
+            <td> {{ movie.year }} </td>
+            <td> {{ movie.nationality }} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You have no movies in your wish list.</p>
+  {% endif %}
 {% endblock %}

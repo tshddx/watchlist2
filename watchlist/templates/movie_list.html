@@ -16,28 +16,32 @@
 
 {% block content %}
   <h2> Movies Watched </h2>
-  <table id="movie-table">
-    <thead>
-      <th class="title">Title</th>
-      <th class="director">Director</th>
-      <th class="year">Year</th>
-      <th class="nationality">Nationality</th>
-      <th class="watched">Watched</th>
-      <th class="viewings">Viewings</th>
-    </thead>
-    <tbody>
-      {% for viewing in viewings %}
-        <tr>
-          <td> <a href="{{ viewing.movie.get_absolute_url }}">{{ viewing.movie.title }}</a> </td>
-          <td> <a href="{{ viewing.movie.director.get_absolute_url }}">{{ viewing.movie.director }}</a> </td>
-          <td> {{ viewing.movie.year }} </td>
-          <td> {{ viewing.movie.nationality }} </td>
-          <td> {{ viewing.date }} </td>
-          <td> {{ viewing.movie.num_viewings }} </td>
-        </tr>
+  {% if viewings %}
+    <table id="movie-table">
+      <thead>
+        <th class="title">Title</th>
+        <th class="director">Director</th>
+        <th class="year">Year</th>
+        <th class="nationality">Nationality</th>
+        <th class="watched">Watched</th>
+        <th class="viewings">Viewings</th>
+      </thead>
+      <tbody>
+        {% for viewing in viewings %}
+          <tr>
+            <td> <a href="{{ viewing.movie.get_absolute_url }}">{{ viewing.movie.title }}</a> </td>
+            <td> <a href="{{ viewing.movie.director.get_absolute_url }}">{{ viewing.movie.director }}</a> </td>
+            <td> {{ viewing.movie.year }} </td>
+            <td> {{ viewing.movie.nationality }} </td>
+            <td> {{ viewing.date }} </td>
+            <td> {{ viewing.movie.num_viewings }} </td>
+          </tr>
       {% endfor %}
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  {% else %}
+    <p>You haven't watched any movies.</p>
+  {% endif %}
 {% endblock %}
 
 {% block sidebar %}

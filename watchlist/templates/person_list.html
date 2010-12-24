@@ -6,6 +6,7 @@
 
 {% block content %}
   <h2> People </h2>
+  {% if people %}
   <table>
     <thead>
       <th>Name</th>
@@ -25,4 +26,7 @@
       {% endfor %}
     </tbody>
   </table>
+  {% else %}
+    <p>There are no people in the database.</p>
+  {% endif %}
 {% endblock %}
