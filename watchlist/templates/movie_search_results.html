@@ -28,12 +28,9 @@
               <p style="font-weight: bold;">{{ result.name }}</p>
             {% endif %}
             <p>({{ result.released }})</p>
-            <form method="post" action="">
-              {% csrf_token %}
-              <input type="hidden" name="tmdb_id" value="{{ result.id }}" />
-              <input type="submit" name="just-watched" value="Just Watched" />
-              <input type="submit" name="add-to-wish-list" value="+ Wish List" />
-            </form>
+            {% with result.in_watchlist as in_db %}
+              {% include "movie_buttons.html" %}
+            {% endwith %}
             {% if result.thumb %}
               <div class="thumbnail">
                 <img src="{{ result.thumb }}" alt="{{ result.name }} {{ result.released }} Poster" />

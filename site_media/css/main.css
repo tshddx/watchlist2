@@ -74,13 +74,14 @@ font-weight: 700;
 
 div #main-content {
     background-color: #f3f3f3;
+    border-top: 2px solid #345F79;
 }
 
 div .content {
     padding: 10px 20px 0px 10px;
 }
 
-div #sidebar {
+div #sidebar, div #footer {
     background-color: #345F79;
     color: #f3f3f3;
 }
@@ -89,13 +90,24 @@ div #sidebar h2 {
     color: inherit;
 }
 
-div #sidebar a {
+div #sidebar a, div #footer a {
     color: white;
     border-bottom: 1px solid #E45500;
 }
 
-div #sidebar a:hover {
+div #sidebar a:hover, div #footer a:hover {
     background-color: #E45500;
+}
+
+div #footer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+div #footer p.footer-line {
+    font-size: 85%;
+    font-style: italic;
+    margin-bottom: 0em;
 }
 
 a, a:visited {
