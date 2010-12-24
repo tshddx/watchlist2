@@ -1,0 +1,7 @@
+table.person-list th.name {
+    min-width: 30%;
+}
+
+table.person-list th.directed {
+    min-width: 70%;
+}

@@ -4,22 +4,31 @@
   All People
 {% endblock %}
 
+{% block css %}
+  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/person_list.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <h2> People </h2>
   {% if people %}
-  <table>
+  <table class="person-list">
     <thead>
-      <th>Name</th>
-      <th>Directed</th>
+      <th class="name">Name</th>
+      <th class="directed">Directed</th>
     </thead>
     <tbody>
       {% for person in people %}
         <tr>
           <td> <a href="{{ person.get_absolute_url }}">{{ person.name }}</a> </td>
           <td>
-            {% for movie in person.movie_set.all %}
-              <a href="{{ movie.get_absolute_url }}">{{ movie.as_abbr|safe }}</a>{% if not forloop.last %}, {% endif %}
-            {% endfor %}
+            {% with person.movie_set.all as movies %}
+              {% for movie in movies|slice:"0:5" %}
+                <a href="{{ movie.get_absolute_url }}">{{ movie }}</a>{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+              {% if movies.count > 5 %}
+                <span> and more </span>
+              {% endif %}
+            {% endwith %}
           </td>
         </tr>
       {% endfor %}
