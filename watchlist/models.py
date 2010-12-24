@@ -47,9 +47,12 @@ class Movie(models.Model):
             day = int(date_string[8:10])
             movie.release_date = datetime.date(year, month, day)
             movie.runtime = int(result['runtime'])
-            director_id = int(result['cast']['director'][0]['id'])
-            director = Person.person_from_tmdb_id(director_id)
-            movie.director = director
+            try:
+                director_id = int(result['cast']['director'][0]['id'])
+                director = Person.person_from_tmdb_id(director_id)
+                movie.director = director
+            except KeyError:
+                pass
             movie.save()
         return movie
     
