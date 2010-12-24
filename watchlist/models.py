@@ -63,10 +63,10 @@ class Movie(models.Model):
             return "%s ... %s" % (self.title[:12], self.title[-12:])
 
     def as_abbr(self):
-        if len(self.title) <= 30:
-            return self.title
-        else:
+        if len(self.title) >= 30:
             return '<abbr title="%s"> %s </abbr>' % (self.title, self.short_title())
+        else:
+            return self.title
     
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.year())
@@ -81,7 +81,10 @@ class Viewing(models.Model):
     notes = models.TextField(blank=True, null=True)
     
     def short_date(self):
-        return date.strftime("%m/%d/%Y")
+        return self.date.strftime("%m/%d/%Y")
+
+    def medium_date(self):
+        return self.date.strftime("%b %d, %Y")
     
     def __unicode__(self):
         return '"%s" on %s' % (self.movie.title, self.date.strftime("%b %d, %Y"))
@@ -109,6 +112,18 @@ class Person(models.Model):
     
     def num_movies(self):
         return self.movie_set.count()
+
+    def short_name(self):
+        if len(self.name) >= 15:
+            return "%s. %s" % (self.name[0], self.name.split()[-1])
+        else:
+            return self.name
+
+    def as_abbr(self):
+        if len(self.name) >= 15:
+            return '<abbr title="%s"> %s </abbr>' % (self.name, self.short_name())
+        else:
+            return self.name
 
     def __unicode__(self):
         return self.name

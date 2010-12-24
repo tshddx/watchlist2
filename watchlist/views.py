@@ -13,8 +13,7 @@ from itertools import islice
 @render_to('index.html')
 def index(request):
     recent_viewings = Viewing.objects.order_by('-date')[:10]
-    directors = sorted([(x, x.movie_set.count()) for x in Person.objects.all()], key=itemgetter(1), reverse=True)
-    favorite_directors = directors[:5]
+    favorite_directors = Person.objects.annotate(num_movies=Count('movie')).order_by('-num_movies')[:5]
     wish_list = Movie.objects.annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0)
     return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list}
     

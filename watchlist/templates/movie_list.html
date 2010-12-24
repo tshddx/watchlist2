@@ -33,7 +33,7 @@
             <td> <a href="{{ viewing.movie.director.get_absolute_url }}">{{ viewing.movie.director }}</a> </td>
             <td> {{ viewing.movie.year }} </td>
             <td> {{ viewing.movie.nationality }} </td>
-            <td> {{ viewing.date }} </td>
+            <td> {{ viewing.short_date }} </td>
             <td> {{ viewing.movie.num_viewings }} </td>
           </tr>
       {% endfor %}
