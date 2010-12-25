@@ -18,24 +18,40 @@ def index(request):
     return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list}
     
 @render_to('movie_detail.html')
-def movie_detail(request, title=None, tmdb_id=None):
-    # If POST, potentially creates a new Movie object:
-    if request.method == 'POST' and tmdb_id:
-        if 'just-watched' in request.POST:
-            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
-            movie.add_viewing()
-        elif 'add-to-wish-list' in request.POST:
-            movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
-        else:
-            raise Exception("If posting to movie_detail, must send either 'just-watched' or 'add-to-wish-list'.")
-        movie.save()
-        return HttpResponseRedirect(movie.get_absolute_url())
-    if title:
-        movie = get_object_or_404(Movie, title=title)
-    elif tmdb_id:
-        movie = get_object_or_404(Movie, tmdb_id=tmdb_id)
+def movie_detail(request, title):
+
+    class MovieCommentsForm(forms.ModelForm):
+        class Meta:
+            model = Movie
+            fields = ('comments',)
+            
+    movie = get_object_or_404(Movie, title=title)
+    comments_form = MovieCommentsForm()
+    if request.method == 'POST':
+        if 'save-comments' in request.POST:
+            comments_form = MovieCommentsForm(data=request.POST, instance=movie)
+            if comments_form.is_valid():
+                comments_form.save()
+    else:
+        comments_form = MovieCommentsForm(instance=movie)
     viewings = movie.viewing_set.order_by('-date')
-    return {'movie': movie, 'viewings': viewings}
+    return {'movie': movie, 'viewings': viewings, 'comments_form': comments_form}
+
+def movie_detail_by_id(request, tmdb_id):
+    # If posting to this view, it's coming from one of the movie_buttons. This potentially creates a new Movie instance.
+    if request.method == 'POST':
+        movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
+        if 'add-to-wish-list' in request.POST:
+            pass
+        if 'just-watched' in request.POST:
+            movie.add_viewing()
+        movie.save()
+    # If not posting to this view, redirect to the normal movie url.
+    else:
+        movie = get_object_or_404(Movie, tmdb_id=tmdb_id)
+    return HttpResponseRedirect(movie.get_absolute_url())
+
+    
     
 @render_to('person_detail.html')
 def person_detail(request, name):
