@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block content %}
+  {% comment %}
   <h2> Movies Watched </h2>
   {% if viewings %}
     <table id="movie-table">
@@ -42,6 +43,37 @@
   {% else %}
     <p>You haven't watched any movies.</p>
   {% endif %}
+  {% endcomment %}
+
+  <h2> Movies Watched </h2>
+  {% if movies %}
+    <table id="movie-table">
+      <thead>
+        <thead>
+          <th class="title">Title</th>
+          <th class="director">Director</th>
+          <th class="year">Year</th>
+          <th class="nationality">Nation.</th>
+          <th class="watched" title="Date of the most recent viewing.">Date</th>
+          <th class="viewings">No.</th>
+        </thead>
+        <tbody>
+          {% for movie in movies %}
+            <tr>
+              <td> {{ movie.as_a|safe }} </td>
+              <td> {{ movie.director.as_a|safe|default:"None" }} </td>
+              <td> {{ movie.year }} </td>
+              <td> {{ movie.nationality }} </td>
+              <td> {{ movie.most_recent_viewing|date:"SHORT_DATE_FORMAT" }} </td>
+              <td> {{ movie.num_viewings }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p> There are no movies in the database </p>
+    {% endif %}
+    
 {% endblock %}
 
 {% comment %}

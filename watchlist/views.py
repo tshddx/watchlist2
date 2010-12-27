@@ -3,7 +3,7 @@ from annoying.decorators import render_to
 from operator import itemgetter
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Max
 from django import forms
 # from tmdb_search import tmdb_search
 from themoviedb import tmdb
@@ -61,8 +61,9 @@ def person_detail(request, name):
     
 @render_to('movie_list.html')
 def movie_list(request):
-    viewings = Viewing.objects.order_by('-date')
-    return {'viewings': viewings}
+    movies = Movie.objects.annotate(num_viewings=Count('viewing'), most_recent_viewing=Max('viewing__date')).select_related('director').order_by("-id")
+    movies = movies.exclude(num_viewings=0)
+    return {'movies': movies}
     
 @render_to('wish_list.html')
 def wish_list(request):
