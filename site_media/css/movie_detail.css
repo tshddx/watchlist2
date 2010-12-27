@@ -7,3 +7,10 @@ div.comments-form textarea {
     height: 100px;
     margin: 0em 0em 1.5em 0em;
 }
+
+.indent {
+    padding-left: 1.5em;
+    border-left: 3px solid #bbb;
+    background-color: #E7EAEC;
+    color: #555;
+}
