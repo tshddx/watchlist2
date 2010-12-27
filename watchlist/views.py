@@ -12,9 +12,9 @@ from itertools import islice
 
 @render_to('index.html')
 def index(request):
-    recent_viewings = Viewing.objects.order_by('-date')[:10]
+    recent_viewings = Viewing.objects.select_related('movie__director').annotate(num_viewings=Count('movie__viewing')).order_by('-date')[:10]
     favorite_directors = Person.objects.annotate(num_movies=Count('movie')).order_by('-num_movies')[:5]
-    wish_list = Movie.objects.annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0)
+    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0)
     return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list}
     
 @render_to('movie_detail.html')
@@ -67,7 +67,7 @@ def movie_list(request):
     
 @render_to('wish_list.html')
 def wish_list(request):
-    wish_list = Movie.objects.annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0)
+    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0)
     return {'wish_list': wish_list}
     
 @render_to('person_list.html')
