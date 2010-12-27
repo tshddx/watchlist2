@@ -23,7 +23,7 @@
         <div class="span-5 {% if forloop.last %}last{% else %}append-1{% endif %}">
           <div class="padded result span-4">
             {% if result.in_watchlist %}
-              <p style="font-weight: bold;"><a href="{% url movie_detail result.id %}">{{ result.name }}</a></p>
+              <p style="font-weight: bold;"><a href="{% url movie_detail_by_id result.id %}">{{ result.name }}</a></p>
             {% else %}
               <p style="font-weight: bold;">{{ result.name }}</p>
             {% endif %}
