@@ -28,7 +28,7 @@
           {% for movie in movies %}
             <tr>
               <td> {{ movie.as_a|safe }} </td>
-              <td> {{ movie.viewing_set.count }} </td>
+              <td> {{ movie.num_viewings }} </td>
             </tr>
           {% endfor %}
         </tbody>

@@ -25,7 +25,7 @@ def movie_detail(request, title):
             model = Movie
             fields = ('comments',)
             
-    movie = get_object_or_404(Movie, title=title)
+    movie = get_object_or_404(Movie.objects.select_related('director'), title=title)
     comments_form = MovieCommentsForm()
     if request.method == 'POST':
         if 'save-comments' in request.POST:
@@ -56,7 +56,7 @@ def movie_detail_by_id(request, tmdb_id):
 @render_to('person_detail.html')
 def person_detail(request, name):
     person = get_object_or_404(Person, name=name)
-    movies = person.movie_set.all()
+    movies = person.movie_set.all().annotate(num_viewings=Count('viewing'))
     return {'person': person, 'movies': movies}
     
 @render_to('movie_list.html')
@@ -108,7 +108,7 @@ def person_search(request):
         for term in terms:
             queries.append(Q(name__icontains=term))
         if queries:
-            people = Person.objects.filter(reduce(lambda x, y: x & y, queries))
+            people = Person.objects.filter(reduce(lambda x, y: x & y, queries)).annotate(num_movies=Count('movie'))
         else:
             people = None
     return {'people': people, 'query': request.POST['query']}
