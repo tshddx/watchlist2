@@ -18,7 +18,7 @@
       {% if people %}
         <h3>Results for "{{ query }}"</h3>
         {% for person in people %}
-          <p> <span class="person-name"> {{ person.as_a|safe }} </span> ({{ person.num_movies }} movie in Watchlist)</p>
+          <p> <span class="person-name"> {{ person.as_a|safe }} </span> ({{ person.num_movies }} movie{{ person.num_movies|pluralize }} in Watchlist)</p>
         {% endfor %}
       {% else %}
         <h3><i>No results for "{{ query }}"</i></h3>
