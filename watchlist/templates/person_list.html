@@ -10,22 +10,23 @@
 
 {% block content %}
   <h2> People </h2>
-  {% if people %}
+  {% if movies %}
+    {% regroup movies by director as director_list %}
   <table class="person-list">
     <thead>
       <th class="name">Name</th>
       <th class="directed">Directed</th>
     </thead>
     <tbody>
-      {% for person in people %}
+      {% for person in director_list %}
         <tr>
-          <td> {{ person.as_a|safe }} </td>
+          <td> {{ person.grouper.as_a|safe }} </td>
           <td>
-            {% with person.movie_set.all as movies %}
+            {% with person.list as movies %}
               {% for movie in movies|slice:"0:5" %}
                 <a href="{{ movie.get_absolute_url }}">{{ movie }}</a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
-              {% if movies.count > 5 %}
+              {% if movies|length > 5 %}
                 <span> and more </span>
               {% endif %}
             {% endwith %}

@@ -72,8 +72,9 @@ def wish_list(request):
     
 @render_to('person_list.html')
 def person_list(request):
-    people = Person.objects.all()
-    return {'people': people}
+    movies = Movie.objects.exclude(director__isnull=True).select_related('director').order_by('director')
+    #people = Person.objects.select_related().annotate(num_movies=Count('movie'))
+    return {'movies': movies}
    
 @render_to()
 def movie_search(request):
