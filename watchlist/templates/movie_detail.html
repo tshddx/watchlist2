@@ -13,20 +13,20 @@
 {% endblock %}
 
 {% block content %}
-    <h2> {{ movie.title }} </h2>
+  <h2> {{ movie.title }} </h2>
   <div class="span-5">
-      <dl>
-        <dt>Released</dt>
-        <dd>{{ movie.release_date }}</dd>
-        <dt>Director</dt>
-        <dd>
-          {{ movie.director.as_a|safe|default:"None" }}
-        </dd>
-        <dt>Nationality</dt>
-        <dd>{{ movie.nationality }}</dd>
-        <dt>Runtime</dt>
-        <dd>{{ movie.runtime }} minutes</dd>
-      </dl>
+    <dl>
+      <dt>Released</dt>
+      <dd>{{ movie.release_date }}</dd>
+      <dt>Director</dt>
+      <dd>
+        {{ movie.director.as_a|safe|default:"None" }}
+      </dd>
+      <dt>Nationality</dt>
+      <dd>{{ movie.nationality }}</dd>
+      <dt>Runtime</dt>
+      <dd>{{ movie.runtime }} minutes</dd>
+    </dl>
   </div>
   <div class="span-12 last">
     {% with movie.tmdb_id as tmdb_id %}
@@ -73,4 +73,4 @@
     </div>
   </div>
   
-  {% endblock %}
+{% endblock %}
