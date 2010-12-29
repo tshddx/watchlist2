@@ -1,50 +1,19 @@
 {% extends "base_without_sidebar.html" %}
 
-{% block title %}
-  All Movies
-{% endblock %}
+  {% block title %}
+    All Movies
+  {% endblock %}
 
+  {% block css %}
+    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+  {% endblock %}
 
-{% block css %}
-  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
-{% endblock %}
-
-{% block javascript %}
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
-{% endblock %}
+  {% block javascript %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+  {% endblock %}
 
 {% block content %}
-  {% comment %}
-  <h2> Movies Watched </h2>
-  {% if viewings %}
-    <table id="movie-table">
-      <thead>
-        <th class="title">Title</th>
-        <th class="director">Director</th>
-        <th class="year">Year</th>
-        <th class="nationality">Nation.</th>
-        <th class="watched">Date</th>
-        <th class="viewings">No.</th>
-      </thead>
-      <tbody>
-        {% for viewing in viewings %}
-          <tr>
-            <td> {{ viewing.movie.as_a|safe }} </td>
-            <td> {{ viewing.movie.director.as_a|safe|default:"None" }} </td>
-            <td> {{ viewing.movie.year }} </td>
-            <td> {{ viewing.movie.nationality }} </td>
-            <td> {{ viewing.short_date }} </td>
-            <td> {{ viewing.movie.num_viewings }} </td>
-          </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>You haven't watched any movies.</p>
-  {% endif %}
-  {% endcomment %}
-
   <h2> Movies Watched </h2>
   {% if movies %}
     <table id="movie-table">
@@ -73,7 +42,6 @@
     {% else %}
       <p> There are no movies in the database </p>
     {% endif %}
-    
 {% endblock %}
 
 {% comment %}
