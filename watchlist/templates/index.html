@@ -48,20 +48,24 @@
   </div>
   <div class="span-8 last">
     <h3> Recommended </h3>
-    <table>
-      <thead>
-        <th>Title</th>
-        <th>Director</th>
-      </thead>
-      <tbody>
-        {% for movie in recommended_movies %}
-          <tr>
-            <td> {{ movie.as_abbreviated_a|safe }} </td>
-            <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% if recommended_movies %}
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Director</th>
+        </thead>
+        <tbody>
+          {% for movie in recommended_movies %}
+            <tr>
+              <td> {{ movie.as_abbreviated_a|safe }} </td>
+              <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No one has recommended any movies yet. Search for a movie over there to the left to recommend it.</p>
+    {% endif %}
   </div>
   <hr />
   <div class="span-5 last">
