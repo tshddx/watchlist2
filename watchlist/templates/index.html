@@ -43,7 +43,7 @@
         {% for movie in wish_list %}
           <tr>
             <td> {{ movie.as_abbreviated_a|safe }} </td>
-            <td> {{ movie.director.as_abbreviated_a|safe }} </td>
+            <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
             <td> {{ movie.release_date }} </td>
           </tr>
         {% endfor %}
