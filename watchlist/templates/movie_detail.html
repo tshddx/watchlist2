@@ -23,7 +23,7 @@
         {{ movie.director.as_a|safe|default:"None" }}
       </dd>
       <dt>Nationality</dt>
-      <dd>{{ movie.nationality }}</dd>
+      <dd>{{ movie.nationality|default:"None" }}</dd>
       <dt>Runtime</dt>
       <dd>{{ movie.runtime }} minutes</dd>
     </dl>
