@@ -14,7 +14,12 @@
 
 {% block content %}
   <h2> {{ movie.title }} </h2>
-  <div class="span-5">
+  <div class="span-5 movie-details">
+    {% if image_url %}
+      <div class="movie-thumbnail">
+        <img src="{{ image_url }}" />
+      </div>
+    {% endif %}
     <dl>
       <dt>Released</dt>
       <dd>{{ movie.release_date }}</dd>

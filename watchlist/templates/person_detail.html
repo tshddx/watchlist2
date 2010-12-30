@@ -7,6 +7,11 @@
 {% block content %}
   <h2> {{ person.name }} </h2>
   <div class="span-5">
+    {% if image_url %}
+      <div class="person-thumbnail">
+        <img src="{{ image_url }}" width="120" />
+      </div>
+    {% endif %}
     <dl>
       <dt>tmdb.org</dt>
       {% if person.tmdb_id %}

@@ -7,8 +7,20 @@ from django.db.models import Count, Q, Max
 from django import forms
 # from tmdb_search import tmdb_search
 from themoviedb import tmdb
+import tmdb_person
 import csv
 from itertools import islice
+
+def get_movie_thumbnail(movie_result):
+    for image in movie_result['images']:
+        if image['type'] == 'poster':
+            return image['thumb']
+    return None
+
+def get_person_thumbnail(tmdb_id):
+    person = tmdb_person.getPersonInfo(tmdb_id)
+    if 'thumbnail' in person:
+        return person['thumbnail']
 
 @render_to('index.html')
 def index(request):
@@ -35,7 +47,9 @@ def movie_detail(request, title):
     else:
         comments_form = MovieCommentsForm(instance=movie)
     viewings = movie.viewing_set.order_by('-date')
-    return {'movie': movie, 'viewings': viewings, 'comments_form': comments_form}
+    if movie.tmdb_id:
+        image_url = get_movie_thumbnail(tmdb.getMovieInfo(movie.tmdb_id))
+    return {'movie': movie, 'viewings': viewings, 'comments_form': comments_form, 'image_url': image_url}
 
 def movie_detail_by_id(request, tmdb_id):
     # If posting to this view, it's coming from one of the movie_buttons. This potentially creates a new Movie instance.
@@ -63,7 +77,9 @@ def movie_detail_by_id(request, tmdb_id):
 def person_detail(request, name):
     person = get_object_or_404(Person, name=name)
     movies = person.movie_set.all().annotate(num_viewings=Count('viewing'))
-    return {'person': person, 'movies': movies}
+    if person.tmdb_id:
+        image_url = get_person_thumbnail(person.tmdb_id)
+    return {'person': person, 'movies': movies, 'image_url': image_url}
     
 @render_to('movie_list.html')
 def movie_list(request):
@@ -83,12 +99,6 @@ def person_list(request):
    
 @render_to()
 def movie_search(request):
-    
-    def get_thumbnail(movie_result):
-        for image in movie_result['images']:
-            if image['type'] == 'poster':
-                return image['thumb']
-        return None
 
     if request.method == 'POST':
         titles = []
@@ -100,7 +110,7 @@ def movie_search(request):
         for movie_title in titles:
             results = tmdb.search(movie_title)[:3]
             for result in results:
-                result['thumb'] = get_thumbnail(result)
+                result['thumb'] = get_movie_thumbnail(result)
                 result['in_watchlist'] = Movie.objects.filter(tmdb_id=result['id']).count() != 0
             movies.append((movie_title, results))
         return {'movies': movies, 'TEMPLATE': 'movie_search_results.html'}

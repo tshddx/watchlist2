@@ -46,6 +46,11 @@ def parsePerson(person_element):
             cur_person['name'] = item.text
         if item.tag.lower() == "id":
             cur_person['id'] = item.text
+        if item.tag.lower() == "images":
+            for subitem in  item:
+                if subitem.get('size').lower() == 'profile':
+                    cur_person['thumbnail'] = subitem.get('url')
+                    break
     return cur_person
     
 # def search(self, title):

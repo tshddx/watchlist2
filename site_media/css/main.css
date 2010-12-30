@@ -250,3 +250,9 @@ h3.movie-title {
     color: white;
     text-align: center;
 }
+
+div.movie-thumbnail, div.person-thumbnail {
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
