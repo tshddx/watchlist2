@@ -24,9 +24,11 @@ class Movie(models.Model):
     def num_viewings(self):
         return self.viewing_set.count()
 
-    def add_viewing(self, date=None):
+    def add_viewing(self, date=None, notes=None):
         if not date:
-            self.viewing_set.create(date=datetime.date.today())
+            date=datetime.date.today()
+        if notes:
+            self.viewing_set.create(date=date, notes=notes)
         else:
             self.viewing_set.create(date=date)
 
