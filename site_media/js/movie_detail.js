@@ -1,7 +1,7 @@
 $(document).ready(function() 
     { 
         form = $("div.comments-form");
-        link = $("p.show-comments-form");
+        link = $("p.show-comments-form>a");
         form.hide();
         link.show();
         link.click(function(e) {
@@ -10,9 +10,5 @@ $(document).ready(function()
             $("div.comments").hide();
             form.show();
         });
-            
-        // $("#movie-table th").click(function() {
-        //         $(this).removeClass("over");
-        //     });
     } 
 ); 
