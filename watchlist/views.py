@@ -17,6 +17,9 @@ def get_movie_thumbnail(movie_result):
             return image['thumb']
     return None
 
+def get_movie_imdb_id(tmdb_id):
+    return tmdb.getMovieInfo(tmdb_id)['imdb_id']
+
 def get_person_thumbnail(tmdb_id):
     person = tmdb_person.getPersonInfo(tmdb_id)
     if 'thumbnail' in person:
@@ -49,7 +52,8 @@ def movie_detail(request, title):
     viewings = movie.viewing_set.order_by('-date')
     if movie.tmdb_id:
         image_url = get_movie_thumbnail(tmdb.getMovieInfo(movie.tmdb_id))
-    return {'movie': movie, 'viewings': viewings, 'comments_form': comments_form, 'image_url': image_url}
+        imdb_id = get_movie_imdb_id(movie.tmdb_id)
+    return {'movie': movie, 'viewings': viewings, 'comments_form': comments_form, 'image_url': image_url, 'imdb_id': imdb_id}
 
 def movie_detail_by_id(request, tmdb_id):
     # If posting to this view, it's coming from one of the movie_buttons. This potentially creates a new Movie instance.

@@ -31,6 +31,14 @@
       <dd>{{ movie.nationality|default:"None" }}</dd>
       <dt>Runtime</dt>
       <dd>{{ movie.runtime }} minutes</dd>
+      {% if movie.tmdb_id %}
+        <dt>tmdb.org</dt>
+        <dd><a href="http://www.themoviedb.org/movie/{{ movie.tmdb_id }}">{{ movie.tmdb_id }}</a></dd>
+      {% endif %}
+      {% if imdb_id %}
+        <dt>imdb.com</dt>
+        <dd><a href="http://www.imdb.com/title/{{ imdb_id }}/">{{ imdb_id }}</a></dd>
+      {% endif %}
     </dl>
   </div>
   <div class="span-12 last">

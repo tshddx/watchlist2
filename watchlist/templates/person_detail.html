@@ -13,11 +13,9 @@
       </div>
     {% endif %}
     <dl>
-      <dt>tmdb.org</dt>
       {% if person.tmdb_id %}
+        <dt>tmdb.org</dt>
         <dd><a href="http://www.themoviedb.org/person/{{ person.tmdb_id }}">{{ person.tmdb_id }}</a></dd>
-      {% else %}
-        <dd>Not Entered</dd>
       {% endif %}
     </dl>
   </div>
