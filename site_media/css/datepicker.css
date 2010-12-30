@@ -51,9 +51,9 @@ div.hasDatepicker tbody tr:nth-child(2n) td, div.hasDatepicker tbody tr.even td 
     cursor:pointer;
 }
 
-.ui-datepicker-calendar td:hover{
+.ui-datepicker-calendar td:hover, .ui-datepicker-calendar td:hover a {
     /*date cell hover*/
-    background-color: #417391;
+    background-color: #417391 !important;
 }
 
 .ui-datepicker-calendar {
@@ -86,10 +86,9 @@ td.ui-datepicker-today, td.ui-datepicker-today a, td.ui-datepicker-today a:hover
     font-weight: bold;
 }
 
-td.ui-datepicker-current-day, td.ui-datepicker-current-day a {
+td.ui-datepicker-current-day, td.ui-datepicker-current-day td, td.ui-datepicker-current-day a {
     /*Selected date*/
-    background-color: #1F3949  !important;
-    color: white  !important;
+    background-color: #1F3949 !important;
 }
 
 div.transparent-title-bar div.ui-datepicker div.ui-datepicker-title {
