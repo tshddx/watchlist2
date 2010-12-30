@@ -1,5 +1,5 @@
 $().ready(function() {
-    $("div.just-watched-form, div.add-to-wish-list-form").each(function() {
+    $("div.just-watched-form, div.add-to-wish-list-form, div.recommend-form").each(function() {
         var tr = $(this).siblings('a')[0];
         var close = $(this).find("a.close-window")[0];
         var myOpen = function(hash) {

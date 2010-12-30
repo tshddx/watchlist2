@@ -29,8 +29,9 @@ def get_person_thumbnail(tmdb_id):
 def index(request):
     recent_viewings = Viewing.objects.select_related('movie__director').annotate(num_viewings=Count('movie__viewing')).order_by('-date')[:10]
     favorite_directors = Person.objects.annotate(num_movies=Count('movie')).order_by('-num_movies')[:5]
-    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).order_by("-id")
-    return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list}
+    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=True).order_by("-id")[:10]
+    recommended_movies = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=False).order_by("-id")[:10]
+    return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list, 'recommended_movies': recommended_movies}
     
 @render_to('movie_detail.html')
 def movie_detail(request, title):
@@ -43,6 +44,8 @@ def movie_detail(request, title):
     movie = get_object_or_404(Movie.objects.select_related('director'), title=title)
     comments_form = MovieCommentsForm()
     if request.method == 'POST':
+        if not request.user.is_authenticated():
+            return HttpResponse("You must be authenticated to do this.")
         if 'save-comments' in request.POST:
             comments_form = MovieCommentsForm(data=request.POST, instance=movie)
             if comments_form.is_valid():
@@ -60,10 +63,14 @@ def movie_detail_by_id(request, tmdb_id):
     if request.method == 'POST':
         movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
         if 'add-to-wish-list' in request.POST:
+            if not request.user.is_authenticated():
+                return HttpResponse("You must be authenticated to do this.")
             c = request.POST['comments']
             if c:
                 movie.comments = c
         if 'just-watched' in request.POST:
+            if not request.user.is_authenticated():
+                return HttpResponse("You must be authenticated to do this.")
             d = request.POST['date']
             d = datetime.date(*map(int, d.split('-')))
             n = request.POST['notes']
@@ -71,6 +78,10 @@ def movie_detail_by_id(request, tmdb_id):
                 movie.add_viewing(d, notes=n)
             else:
                 movie.add_viewing(d)
+        if 'recommend' in request.POST:
+            movie.recommended_by = request.POST['recommended_by']
+            if request.POST['recommend_comments']:
+                movie.recommend_comments = request.POST['recommend_comments']
         movie.save()
     # If not posting to this view, redirect to the normal movie url.
     else:
@@ -93,8 +104,9 @@ def movie_list(request):
     
 @render_to('wish_list.html')
 def wish_list(request):
-    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).order_by("-id")
-    return {'wish_list': wish_list}
+    recommended_movies = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=False).order_by("-id")[:10]
+    wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0, recommended_by__isnull=True).order_by("-id")
+    return {'recommended_movies': recommended_movies, 'wish_list': wish_list}
     
 @render_to('person_list.html')
 def person_list(request):

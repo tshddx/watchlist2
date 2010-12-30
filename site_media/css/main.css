@@ -176,7 +176,7 @@ a.small-button:visited {
     color: inherit;
 }
 
-div.just-watched-form, div.add-to-wish-list-form {
+div.just-watched-form, div.add-to-wish-list-form, div.recommend-form {
     display: none;
     position: absolute;
     border: 8px solid #1F3949;

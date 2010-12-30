@@ -1,37 +1,60 @@
 <div class="movie-buttons">
-  <span>
-    <a href="" class="just-watched-link small-button">Just Watched</a>
-    <div class="just-watched-form padded span-6 last">
-      <form method="post" action="{% url movie_detail_by_id tmdb_id=tmdb_id %}">
-        {% csrf_token %}
-        <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
-        <h3 class="movie-title">{{ title }}</h3>
-        <div class="datepicker"> <input type="hidden" class="datepicker-alt" name="date" /> </div>
-        <p> Notes: </p>
-        <p> <textarea style="width: 100%; height:60px;" name="notes"></textarea> </p>
-        <p>
-          <input type="submit" name="just-watched" value="Add Viewing" />
-          <a href="" class="close-window"> cancel </a>
-        </p>
-      </form>
-    </div>
-  </span>
-  {% if not in_db %}
+  {% if user.is_authenticated  %}
     <span>
-      <a href="" class="add-to-wish-list-link small-button">+ Wish List</a>
-      <div class="add-to-wish-list-form padded span-6 last">
+      <a href="" class="just-watched-link small-button">Just Watched</a>
+      <div class="just-watched-form padded span-6 last">
         <form method="post" action="{% url movie_detail_by_id tmdb_id=tmdb_id %}">
           {% csrf_token %}
           <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
           <h3 class="movie-title">{{ title }}</h3>
-          <p> Comments: </p>
-          <p> <textarea style="width: 100%; height:60px" name="comments"></textarea> </p>
+          <div class="datepicker"> <input type="hidden" class="datepicker-alt" name="date" /> </div>
+          <p> Notes: </p>
+          <p> <textarea style="width: 100%; height:60px;" name="notes"></textarea> </p>
           <p>
-            <input type="submit" name="add-to-wish-list" value="Add to Wish List" />
+            <input type="submit" name="just-watched" value="Add Viewing" />
             <a href="" class="close-window"> cancel </a>
           </p>
         </form>
       </div>
     </span>
+  {% endif %}
+  {% if not in_db %}
+    {% if user.is_authenticated %}
+      <span>
+        <a href="" class="add-to-wish-list-link small-button">+ Wish List</a>
+        <div class="add-to-wish-list-form padded span-6 last">
+          <form method="post" action="{% url movie_detail_by_id tmdb_id=tmdb_id %}">
+            {% csrf_token %}
+            <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
+            <h3 class="movie-title">{{ title }}</h3>
+            <p> Comments: </p>
+            <p> <textarea style="width: 100%; height:60px" name="comments"></textarea> </p>
+            <p>
+              <input type="submit" name="add-to-wish-list" value="Add to Wish List" />
+              <a href="" class="close-window"> cancel </a>
+            </p>
+          </form>
+        </div>
+      </span>
+    {% else %}
+      <span>
+        <a href="" class="recommend-link small-button">Recommend</a>
+        <div class="recommend-form padded span-6 last">
+          <form method="post" action="{% url movie_detail_by_id tmdb_id=tmdb_id %}">
+            {% csrf_token %}
+            <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
+            <h3 class="movie-title">{{ title }}</h3>
+            <p> Your name: </p>
+            <p> <input type="text" name="recommended_by" value="" /> </p>
+            <p> Comments: </p>
+            <p> <textarea style="width: 100%; height:60px" name="recommend_comments"></textarea> </p>
+            <p>
+              <input type="submit" name="recommend" value="Recommend" />
+              <a href="" class="close-window"> cancel </a>
+            </p>
+          </form>
+        </div>
+      </span>
+    {% endif %}
   {% endif %}
 </div>

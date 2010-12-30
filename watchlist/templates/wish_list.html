@@ -1,18 +1,39 @@
 {% extends "base_with_sidebar.html" %}
 
 {% block title %}
-    Wish List
+  Movies To Watch
 {% endblock %}
 
 {% block content %}
-  <h2> Wish List </h2>
-  {% if wish_list %}
+  {% if recommended_movies %}
+    <h2> Recommended Movies </h2>
     <table>
       <thead>
         <th>Title</th>
         <th>Director</th>
         <th>Year</th>
-        <th>Nationality</th>
+        <th>Rec. By</th>
+      </thead>
+      <tbody>
+        {% for movie in recommended_movies %}
+          <tr>
+            <td> {{ movie.as_a|safe }}</a> </td>
+            <td> {{ movie.director.as_a|safe }}</a> </td>
+            <td> {{ movie.year }} </td>
+            <td> {{ movie.recommended_by }} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  {% if wish_list %}
+    <h2> Wish List </h2>
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Year</th>
       </thead>
       <tbody>
         {% for movie in wish_list %}
@@ -20,12 +41,12 @@
             <td> {{ movie.as_a|safe }}</a> </td>
             <td> {{ movie.director.as_a|safe }}</a> </td>
             <td> {{ movie.year }} </td>
-            <td> {{ movie.nationality }} </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-  {% else %}
-    <p>You have no movies in your wish list.</p>
+  {% endif %}
+  {% if not recommended_movies and not wish_list %}
+    <p>There are no movies to watch. :(</p>
   {% endif %}
 {% endblock %}

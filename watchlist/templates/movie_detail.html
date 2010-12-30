@@ -51,7 +51,14 @@
     {% endwith %}
     <br />
     {% if viewings %}
-      <h3>Viewings</h3>
+      {% if movie.recommended_by %}
+        <p><strong>This movie was previously recommended by {{ movie.recommended_by }}.</strong></p>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <h3>Viewings</h3>
+      {% else %}
+        <h3> Viewings by Shaddox </h3>
+      {% endif %}
       <table>
         <thead>
           <th>Date</th>
@@ -67,25 +74,41 @@
         </tbody>
       </table>
     {% else %}
-      <p>This movie is on your wish list.</p>
+      {% if movie.recommended_by %}
+        <p><strong>{{ movie.recommended_by }} recommends this movie{% if movie.recommend_comments %}, saying:{% else %}.{% endif %}</strong></p>
+        {% if movie.recommend_comments %}
+          <p class="indent">{{ movie.recommend_comments }}</p>
+        {% endif %}
+      {% else %}
+        <p><strong>This movie is on {% if user.is_authenticated %}your{% else %}Shaddox'{% endif %} wish list.</strong></p>
+      {% endif %}
     {% endif %}
-    {% if movie.comments %}
-      <div class="comments">
-        <h3>Comments</h3>
-        <p class="indent">{{ movie.comments }}</p>
-        <p class="show-comments-form"> <a href=""> Edit comments </a> </p>
+    {% if user.is_authenticated %}
+      {% if movie.comments %}
+        <div class="comments">
+          <h3>Your Comments</h3>
+          <p class="indent">{{ movie.comments }}</p>
+          <p class="show-comments-form"> <a href=""> Edit comments </a> </p>
+        </div>
+      {% else %}
+        <p class="show-comments-form"> <a href=""> Add comments </a> </p>
+      {% endif %}
+      <div class="comments-form">
+        <h3>Your Comments</h3>
+        <form action="" method="post">
+          {% csrf_token %}
+          <textarea name="comments">{{ movie.comments|default:"" }}</textarea>
+          <input type="submit" name="save-comments" value="Save Comments" />
+        </form>
       </div>
     {% else %}
-      <p class="show-comments-form"> <a href=""> Add comments </a> </p>
+      {% if movie.comments %}
+        <div class="comments">
+          <h3>Comments from Shaddox</h3>
+          <p class="indent">{{ movie.comments }}</p>
+        </div>
+      {% endif %}
     {% endif %}
-    <div class="comments-form">
-      <h3>Comments</h3>
-      <form action="" method="post">
-        {% csrf_token %}
-        <textarea name="comments">{{ movie.comments|default:"" }}</textarea>
-        <input type="submit" name="save-comments" value="Save Comments" />
-      </form>
-    </div>
   </div>
   
 {% endblock %}

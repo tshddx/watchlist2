@@ -11,7 +11,6 @@
       <th>Title</th>
       <th>Director</th>
       <th>Year</th>
-      <th>Nationality</th>
       <th>Watched</th>
       <th>Viewings</th>
     </thead>
@@ -21,7 +20,6 @@
           <td> {{ viewing.movie.as_a|safe }} </td>
           <td> {{ viewing.movie.director.as_a|safe|default:"None" }} </td>
           <td> {{ viewing.movie.year }} </td>
-          <td> {{ viewing.movie.nationality }} </td>
           <td> {{ viewing.date }} </td>
           <td> {{ viewing.num_viewings }} </td>
         </tr>
@@ -31,25 +29,41 @@
 
   <hr />
   
-  <div class="span-11 append-1">
+  <div class="span-8 append-1">
     <h3> Wish List </h3>
     <table>
       <thead>
         <th>Title</th>
         <th>Director</th>
-        <th>Release Date</th>
       </thead>
       <tbody>
         {% for movie in wish_list %}
           <tr>
             <td> {{ movie.as_abbreviated_a|safe }} </td>
             <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
-            <td> {{ movie.release_date }} </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
+  <div class="span-8 last">
+    <h3> Recommended </h3>
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Director</th>
+      </thead>
+      <tbody>
+        {% for movie in recommended_movies %}
+          <tr>
+            <td> {{ movie.as_abbreviated_a|safe }} </td>
+            <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <hr />
   <div class="span-5 last">
     <h3> Favorite Directors </h3>
     <table>

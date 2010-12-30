@@ -11,6 +11,8 @@ class Movie(models.Model):
     nationality = models.CharField(max_length=255, null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
     tmdb_id = models.CharField(max_length=255, null=True, blank=True)
+    recommended_by = models.CharField(max_length=255, null=True, blank=True)
+    recommend_comments = models.TextField(null=True, blank=True)
     
     def year(self):
         return self.release_date.year if self.release_date else None
@@ -33,7 +35,7 @@ class Movie(models.Model):
             self.viewing_set.create(date=date)
 
     @classmethod
-    def movie_from_tmdb_id(cls, tmdb_id):
+    def movie_from_tmdb_id(cls, tmdb_id, recommended_by=None):
         """Return a Movie object with the specified tmdb_id. As a side effect, create the Movie in
         the database and fill in its info from themoviedb if it doesn't already exist in the database."""
         movie, created = cls.objects.get_or_create(tmdb_id=tmdb_id)
@@ -55,6 +57,8 @@ class Movie(models.Model):
                 movie.director = director
             except KeyError:
                 pass
+            if recommended_by:
+                movie.recommended_by = recommended_by
             movie.save()
         return movie
 
