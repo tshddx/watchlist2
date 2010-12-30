@@ -1,24 +1,24 @@
 {% extends "base_with_sidebar.html" %}
 
 {% block title %}
-    Search Results
+  Search Results
 {% endblock %}
 
 
 {% block css %}
-    <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
+  <link media="screen, projection" type="text/css" href="{{ MEDIA_URL }}css/movie_list.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/tablesorter/jquery.tablesorter.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/movie_list.js"></script>
 {% endblock %}
 
 {% block content %}
   <h2> Search Results </h2>
   {% for title, movie in movies %}
     <div class="results span-17 last">
-        <h3>Results for "{{ title }}"</h3>
+      <h3>Results for "{{ title }}"</h3>
       {% for result in movie %}
         <div class="span-5 {% if forloop.last %}last{% else %}append-1{% endif %}">
           <div class="padded result span-4">
@@ -28,17 +28,17 @@
               <p style="font-weight: bold;">{{ result.name }}</p>
             {% endif %}
             <p>({{ result.released }})</p>
-            {% with result.id as tmdb_id %}
-              {% with result.in_watchlist as in_db %}
-                {% include "movie_buttons.html" %}
+            {% with result.name as title %}
+              {% with result.id as tmdb_id %}
+                {% with result.in_watchlist as in_db %}
+                  {% include "movie_buttons.html" %}
+                {% endwith %}
               {% endwith %}
             {% endwith %}
             {% if result.thumb %}
               <div class="thumbnail">
                 <img src="{{ result.thumb }}" alt="{{ result.name }} {{ result.released }} Poster" />
               </div>
-            {% else %}
-              <em> No poster </em>
             {% endif %}
           </div>
         </div>
@@ -47,4 +47,3 @@
     <hr />
   {% endfor %}
 {% endblock %}
-

@@ -26,9 +26,8 @@ body {
 
 
 #top-menu {
-    /*margin-bottom: 0.5em;
-    float: left;*/
     float: right;
+    background-color: #f3f3f3;
 }
 
 #top-menu ul {
@@ -135,24 +134,27 @@ a:hover {
     text-decoration: none;
 }
 
-div .results {
+div.results {
     margin-bottom: 1.45em;
 }
 
-div .result {
+div.result {
     padding-bottom: 1.45em;
-    /* border: solid 2px #345F79; */
-    background-color: #dddde3;
-    height: 200px;
-    overflow: hidden;
+    /* CSS3 gradients, from http://www.webdesignerwall.com/tutorials/cross-browser-css-gradient/ */
+    background-color: #dddde3; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddde3', endColorstr='#F3F3F3'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#dddde3), to(#f3f3f3)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #dddde3,  #f3f3f3); /* for firefox 3.6+ */
 }
 
-div .result p {
+div.result p {
     margin-bottom: 2px;
 }
 
-div.movie-buttons input[type="submit"] {
-    width: 70px;
+a.small-button {
+    display: inline-block;
+    text-align: center;
+    width: 66px;
     background-color: white;
     border: 2px solid #E47B3D;
     font-size: 75%;
@@ -160,14 +162,58 @@ div.movie-buttons input[type="submit"] {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+    color: #444;
+    vertical-align: bottom;
 }
 
-div.movie-buttons input[type="submit"]:hover {
+a.small-button:hover {
     background-color: #E4DAD4;
     cursor: pointer;
+    color: inherit;
 }
 
-div .result .thumbnail {
+a.small-button:visited {
+    color: inherit;
+}
+
+div.just-watched-form, div.add-to-wish-list-form {
+    display: none;
+    position: absolute;
+    border: 8px solid #1F3949;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    background-color: #345F79;
+    color: #ddd;
+    /* CSS Box Shadow, from http://css3please.com/ */    
+    -moz-box-shadow: 0px 0px 20px #000; 
+    -webkit-box-shadow: 0px 0px 16px #000; 
+    box-shadow: 0px 0px 20px #000; 
+
+}
+
+div.just-watched-form p, div.add-to-wish-list-form p {
+    margin-bottom: 2px;
+}
+
+a.close-window {
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    background-color: #1F3949;
+    padding: 4px 8px;
+    border: 4px solid #1F3949;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+a.close-window:hover {
+    text-decoration: underline !important;
+    background-color: #1F3949;
+}
+
+div.result .thumbnail {
     padding-top: 8px;
     text-align: center;
 }
@@ -193,4 +239,14 @@ a.comments-icon {
 a.comments-icon:hover {
     color: #E45500;
     background-color: #ccc;
-}    
+}
+
+div.datepicker {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+h3.movie-title {
+    color: white;
+    text-align: center;
+}

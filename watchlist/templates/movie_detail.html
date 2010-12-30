@@ -29,9 +29,11 @@
     </dl>
   </div>
   <div class="span-12 last">
-    {% with movie.tmdb_id as tmdb_id %}
-      {% with 1 as in_db %}
-        {% include "movie_buttons.html" %}
+    {% with movie.title as title %}
+      {% with movie.tmdb_id as tmdb_id %}
+        {% with 1 as in_db %}
+          {% include "movie_buttons.html" %}
+        {% endwith %}
       {% endwith %}
     {% endwith %}
     <br />

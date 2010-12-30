@@ -42,16 +42,22 @@ def movie_detail_by_id(request, tmdb_id):
     if request.method == 'POST':
         movie = Movie.movie_from_tmdb_id(request.POST['tmdb_id'])
         if 'add-to-wish-list' in request.POST:
-            pass
+            c = request.POST['comments']
+            if c:
+                movie.comments = c
         if 'just-watched' in request.POST:
-            movie.add_viewing()
+            d = request.POST['date']
+            d = datetime.date(*map(int, d.split('-')))
+            n = request.POST['notes']
+            if n:
+                movie.add_viewing(d, notes=n)
+            else:
+                movie.add_viewing(d)
         movie.save()
     # If not posting to this view, redirect to the normal movie url.
     else:
         movie = get_object_or_404(Movie, tmdb_id=tmdb_id)
     return HttpResponseRedirect(movie.get_absolute_url())
-
-    
     
 @render_to('person_detail.html')
 def person_detail(request, name):
