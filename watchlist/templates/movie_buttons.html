@@ -44,7 +44,7 @@
             {% csrf_token %}
             <input type="hidden" name="tmdb_id" value="{{ tmdb_id }}" />
             <h3 class="movie-title">{{ title }}</h3>
-            <p> Your name: </p>
+            <p> Your name (this will be displayed): </p>
             <p> <input type="text" name="recommended_by" value="" /> </p>
             <p> Comments: </p>
             <p> <textarea style="width: 100%; height:60px" name="recommend_comments"></textarea> </p>
