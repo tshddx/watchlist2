@@ -30,7 +30,7 @@ def index(request):
     recent_viewings = Viewing.objects.select_related('movie__director').annotate(num_viewings=Count('movie__viewing')).order_by('-date')[:10]
     favorite_directors = Person.objects.annotate(num_movies=Count('movie')).order_by('-num_movies')[:5]
     wish_list = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=True).order_by("-id")[:10]
-    recommended_movies = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=False).order_by("-id")[:10]
+    recommended_movies = Movie.objects.select_related('director').annotate(num_viewings=Count('viewing')).filter(num_viewings__exact=0).filter(recommended_by__isnull=False).order_by("-id")[:9]
     return {'recent_viewings': recent_viewings, 'favorite_directors': favorite_directors, 'wish_list': wish_list, 'recommended_movies': recommended_movies}
     
 @render_to('movie_detail.html')
