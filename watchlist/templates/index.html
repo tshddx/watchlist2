@@ -61,10 +61,13 @@
               <td> {{ movie.director.as_abbreviated_a|safe|default:"None" }} </td>
             </tr>
           {% endfor %}
+          <tr>
+            <td colspan="2"><em>Search for a movie over there to the right to recommend it to me!</em></td>
+          </tr>
         </tbody>
       </table>
     {% else %}
-      <p>No one has recommended any movies yet. Search for a movie over there to the right to recommend it.</p>
+      <p>No one has recommended any movies yet. Search for a movie over there to the right to recommend it to me!</p>
     {% endif %}
   </div>
   <hr />
