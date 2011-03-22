@@ -4,7 +4,7 @@ thead th {
 }
 
 tbody tr:nth-child(2n) td, tbody tr.even td {
-    background-color: #E7EAEC;
+    background-color: #E6E6E8;
 }
 
 .padded {

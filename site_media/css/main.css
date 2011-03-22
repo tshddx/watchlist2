@@ -6,7 +6,7 @@ body {
 #wrapper {
     width: 970px;
     margin: auto;
-    /* border: 2px solid blue; */
+/* border: 2px solid blue; */
 }
 
 #header h1 {
@@ -31,44 +31,43 @@ body {
 }
 
 #top-menu ul {
-list-style-type: none;
-width: auto;
-position: relative;
-display: block;
-height: 33px;
-font-size: 18px;
-font-weight: bold;
-margin: 0;
-padding: 0;
+    list-style-type: none;
+    width: auto;
+    position: relative;
+    display: block;
+    height: 33px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 
 #top-menu ul li {
-display: block;
-float: left;
-margin: 0;
-padding: 0;
-background-color: white;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
 }
 
 #top-menu ul li a {
-float: left;
-color: #E45500;
-text-decoration: none;
-height: 24px;
-border-bottom-style: none;
-padding: 6px 10px;
+    float: left;
+    color: #E45500;
+    text-decoration: none;
+    height: 24px;
+    border-bottom-style: none;
+    padding: 6px 10px;
 }
 
 #top-menu ul li a:hover, .current {
-color: #E45500;
-background-color: #036564;
-text-decoration: none;
-border-bottom-style: none;
+    color: #E45500;
+    background-color: #036564;
+    text-decoration: none;
+    border-bottom-style: none;
 }
 
 #top-menu ul .current a {
-color: #fff;
-font-weight: 700;
+    color: #fff;
+    font-weight: 700;
 }
 
 h2, h3, h4 {
@@ -125,7 +124,7 @@ div #footer p.footer-line {
 a, a:visited {
     color: #E45500;
     text-decoration: none;
-    /* border-bottom: 1px solid #E45500; */
+/* border-bottom: 1px solid #E45500; */
 }
 
 a:hover {
