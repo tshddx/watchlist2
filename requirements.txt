@@ -1,0 +1,5 @@
+Django
+South>=0.7
+django-annoying
+django-extensions
+themoviedb
