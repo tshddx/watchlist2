@@ -1,4 +1,4 @@
-from watchlist2.watchlist.models import *
+from watchlist.models import *
 from annoying.decorators import render_to
 from operator import itemgetter
 from django.shortcuts import get_object_or_404
