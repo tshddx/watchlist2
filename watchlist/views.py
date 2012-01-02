@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import Count, Q, Max
 from django import forms
 # from tmdb_search import tmdb_search
-from themoviedb import tmdb
+import tmdb
 import tmdb_person
 import csv
 from itertools import islice
