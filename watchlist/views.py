@@ -14,7 +14,9 @@ from itertools import islice
 def get_movie_thumbnail(movie_result):
     for image in movie_result['images']:
         if image['type'] == 'poster':
-            return image['thumb']
+            for thumb_type in ['thumb', 'w154', 'cover', 'w342', 'mid', 'original']:
+                if thumb_type in image:
+                    return image[thumb_type]
     return None
 
 def get_movie_imdb_id(tmdb_id):
