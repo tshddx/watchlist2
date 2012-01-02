@@ -1,4 +1,4 @@
-import csv, os, pprint, themoviedb, datetime
+import csv, os, pprint, datetime
 from watchlist.models import *
 
 films_csv = csv.reader(open(os.path.abspath('scripts/films.csv')), delimiter='\t')

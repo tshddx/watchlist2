@@ -1,6 +1,6 @@
 from django.db import models
 import datetime
-from themoviedb import tmdb
+import tmdb
 import tmdb_person
 
 class Movie(models.Model):
