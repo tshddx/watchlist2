@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     # The following line serves the css files:
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': r'site_media'}),
-    (r'', include('watchlist2.watchlist.urls')),
+    (r'', include('watchlist.urls')),
 )

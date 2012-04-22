@@ -77,7 +77,7 @@ MIDDLEWARE_CLASSES = (
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'watchlist2.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -99,7 +99,7 @@ INSTALLED_APPS = (
     'django_extensions',
     # "debug_toolbar",
     # 'django_filters',
-    'watchlist2.watchlist',
+    'watchlist',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)

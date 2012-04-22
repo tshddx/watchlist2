@@ -1,5 +1,5 @@
 from django.contrib import admin
-from watchlist2.watchlist.models import *
+from watchlist.models import *
 
 admin.site.register(Movie)
 admin.site.register(Viewing)

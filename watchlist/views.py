@@ -1,4 +1,4 @@
-from watchlist2.watchlist.models import *
+from watchlist.models import *
 from annoying.decorators import render_to
 from operator import itemgetter
 from django.shortcuts import get_object_or_404
@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import Count, Q, Max
 from django import forms
 # from tmdb_search import tmdb_search
-from themoviedb import tmdb
+import tmdb
 import tmdb_person
 import csv
 from itertools import islice
@@ -14,7 +14,9 @@ from itertools import islice
 def get_movie_thumbnail(movie_result):
     for image in movie_result['images']:
         if image['type'] == 'poster':
-            return image['thumb']
+            for thumb_type in ['thumb', 'w154', 'cover', 'w342', 'mid', 'original']:
+                if thumb_type in image:
+                    return image[thumb_type]
     return None
 
 def get_movie_imdb_id(tmdb_id):
