@@ -1,0 +1,144 @@
+<html>
+  <head> <title> Movie Watchlist | Search Results </title>
+
+   <link rel="shortcut icon" href="../site_media/img/favicon.png">
+
+  <link media="screen, projection" type="text/css" href="../site_media/css/blueprint/screen.css" rel="stylesheet" />
+  <link media="print" type="text/css" href="../site_media/css/blueprint/print.css" rel="stylesheet" />
+  <!--[if lt IE 8]><link rel="stylesheet" href="../site_media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+  <link media="screen, projection" type="text/css" href="../site_media/css/blueprint_overrides.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="../site_media/js/jqModal/jqModal.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="../site_media/js/jqModal/jqModal_overrides.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="../site_media/css/main.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="../site_media/css/datepicker.css" rel="stylesheet" />
+
+  <link media="screen, projection" type="text/css" href="../site_media/css/movie_list.css" rel="stylesheet">
+
+  <script type="text/javascript" src="../site_media/js/vendor/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="../site_media/js/vendor/jquery-ui-1.8.7.min.js"></script>
+  <script type="text/javascript" src="../site_media/js/jqModal/jqModal.js"></script>
+  <script type="text/javascript" src="../site_media/js/main.js"></script>
+
+  
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="span-10 prepend-top">
+        <div id="header">
+          <h1><a href="../index.html"> Movie Watchlist </a></h1>
+        </div>
+      </div>
+      <div class="span-8 prepend-top last">
+        <div id="top-menu">
+          <ul>
+            <li><a href="../movie/index.html"> movies </a>
+            <li><a href="../person/index.html"> people </a>
+            <li><a href="../movie/wishlist.html"> todo </a>
+          </ul>
+        </div>
+      </div>
+
+  <div id="main-content" class="padded span-17">
+  <h2> Search Results </h2>
+  <div class="results span-17 last">
+      <h3>Results for "rushmore"</h3>
+        <div class="span-5 append-1">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;"><a href="../movie/detail.html">Rushmore</a></p>
+            <p>(1998-09-17)</p>
+            
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-rushmore-0/185/278" alt="Rushmore Poster" />
+            </div>
+          </div>
+        </div>
+        <div class="span-5 append-1">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;"><a href="../movie/detail.html">The Royal Tenenbaums</a></p>
+            <p>(2001-10-05)</p>
+            
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-the-royal-tenenbaums-1/185/278" alt="The Royal Tenenbaums Poster" />
+            </div>
+          </div>
+        </div>
+        <div class="span-5 last">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;">Moonrise Kingdom</p>
+            <p>(Unknown)</p>
+            <div class="movie-buttons">
+              <span>
+                <a href="" class="recommend-link small-button">Recommend</a>
+              </span>
+            </div>
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-moonrise-kingdom-2/185/278" alt="Moonrise Kingdom Poster" />
+            </div>
+          </div>
+        </div>
+    </div>
+    <hr />
+  <div class="results span-17 last">
+      <h3>Results for "annie hall"</h3>
+        <div class="span-5 append-1">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;"><a href="../movie/detail.html">Annie Hall</a></p>
+            <p>(1977-04-20)</p>
+            
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-annie-hall-0/185/278" alt="Annie Hall Poster" />
+            </div>
+          </div>
+        </div>
+        <div class="span-5 append-1">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;"><a href="../movie/detail.html">Manhattan</a></p>
+            <p>(1979-03-14)</p>
+            
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-manhattan-1/185/278" alt="Manhattan Poster" />
+            </div>
+          </div>
+        </div>
+        <div class="span-5 last">
+          <div class="padded result span-4">
+            <p style="font-weight: bold;">Hannah and Her Sisters</p>
+            <p>(Unknown)</p>
+            <div class="movie-buttons">
+              <span>
+                <a href="" class="recommend-link small-button">Recommend</a>
+              </span>
+            </div>
+            <div class="thumbnail">
+              <img src="https://picsum.photos/seed/search-hannah-and-her-sisters-2/185/278" alt="Hannah and Her Sisters Poster" />
+            </div>
+          </div>
+        </div>
+    </div>
+    <hr />
+
+  </div>
+
+  <div id="sidebar" class="padded span-4 last push-1">
+      <form method="get" action="../movie/search-results.html">
+        <input type="text" name="query" />
+        <input type="submit" value="Search Movie" name="single-movie-search" />
+      </form>
+      <br />
+      <form method="get" action="../person/search-results.html">
+        <input type="text" name="query" />
+        <input type="submit" value="Search Person" name="person-search" />
+      </form>
+  </div>
+
+  <div id="footer" class="padded span-17 last append-top">
+    <p class="footer-line">by <a href="http://www.tshaddox.com/?page_id=2">Thomas Shaddox</a>. <a href="../credits.html">Credits</a>.</p>
+  </div>
+
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,33 @@
+/* th.title { */
+/*     max-width: 150px; */
+/* } */
+
+/* th.director { */
+/*     max-width: 110px; */
+/* } */
+
+th.year {
+    max-width: 70px;
+}
+
+th.nationality {
+    max-width: 70px;
+}
+
+th.watched {
+    max-width: 70px;
+}
+
+th.viewings {
+    max-width: 70px;
+}
+
+th.over {
+    color: #FF982C;
+}
+
+th span.sort-arrows {
+    font-size: 11px;
+    font-size: 11px;
+    color: #8CA7B8;
+}

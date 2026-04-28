@@ -1,0 +1,257 @@
+body {
+    background-color: #1F3949;
+    color: #333;
+}
+
+#wrapper {
+    width: 970px;
+    margin: auto;
+/* border: 2px solid blue; */
+}
+
+#header h1 {
+    color: white;
+}
+
+#header h1 a {
+    color: white;
+    border-bottom-style: none;
+}
+
+#header h1 a:hover {
+    background-color: inherit;
+    color: #E45500;
+    border-bottom: solid 6px #036564;
+}
+
+
+#top-menu {
+    float: right;
+    background-color: #f3f3f3;
+}
+
+#top-menu ul {
+    list-style-type: none;
+    width: auto;
+    position: relative;
+    display: block;
+    height: 33px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+#top-menu ul li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#top-menu ul li a {
+    float: left;
+    color: #E45500;
+    text-decoration: none;
+    height: 24px;
+    border-bottom-style: none;
+    padding: 6px 10px;
+}
+
+#top-menu ul li a:hover, .current {
+    color: #E45500;
+    background-color: #036564;
+    text-decoration: none;
+    border-bottom-style: none;
+}
+
+#top-menu ul .current a {
+    color: #fff;
+    font-weight: 700;
+}
+
+h2, h3, h4 {
+    color: #036564;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+div #main-content {
+    background-color: #f3f3f3;
+    border-top: 2px solid #345F79;
+}
+
+div .content {
+    padding: 10px 20px 0px 10px;
+}
+
+div #sidebar, div #footer {
+    background-color: #345F79;
+    color: #f3f3f3;
+}
+
+div #sidebar h2 {
+    color: inherit;
+}
+
+div #sidebar a, div #footer a {
+    color: white;
+    border-bottom: 1px solid #E45500;
+}
+
+div #sidebar a:hover, div #footer a:hover {
+    background-color: #E45500;
+}
+
+div #footer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+div #footer p.footer-line {
+    font-size: 85%;
+    font-style: italic;
+    margin-bottom: 0em;
+}
+
+a, a:visited {
+    color: #E45500;
+    text-decoration: none;
+/* border-bottom: 1px solid #E45500; */
+}
+
+a:hover {
+    color: #E45500;
+    background-color: #ccc;
+    text-decoration: none;
+}
+
+div.results {
+    margin-bottom: 1.45em;
+}
+
+div.result {
+    padding-bottom: 1.45em;
+    /* CSS3 gradients, from http://www.webdesignerwall.com/tutorials/cross-browser-css-gradient/ */
+    background-color: #dddde3; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddde3', endColorstr='#F3F3F3'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#dddde3), to(#f3f3f3)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #dddde3,  #f3f3f3); /* for firefox 3.6+ */
+}
+
+div.result p {
+    margin-bottom: 2px;
+}
+
+a.small-button {
+    display: inline-block;
+    text-align: center;
+    width: 66px;
+    background-color: white;
+    border: 2px solid #E47B3D;
+    font-size: 75%;
+    margin-bottom: 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #444;
+    vertical-align: bottom;
+}
+
+a.small-button:hover {
+    background-color: #E4DAD4;
+    cursor: pointer;
+    color: inherit;
+}
+
+a.small-button:visited {
+    color: inherit;
+}
+
+div.just-watched-form, div.add-to-wish-list-form, div.recommend-form {
+    display: none;
+    position: absolute;
+    border: 8px solid #1F3949;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    background-color: #345F79;
+    color: #ddd;
+    /* CSS Box Shadow, from http://css3please.com/ */    
+    -moz-box-shadow: 0px 0px 20px #000; 
+    -webkit-box-shadow: 0px 0px 16px #000; 
+    box-shadow: 0px 0px 20px #000; 
+
+}
+
+div.just-watched-form p, div.add-to-wish-list-form p {
+    margin-bottom: 2px;
+}
+
+a.close-window {
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    background-color: #1F3949;
+    padding: 4px 8px;
+    border: 4px solid #1F3949;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+a.close-window:hover {
+    text-decoration: underline !important;
+    background-color: #1F3949;
+}
+
+div.result .thumbnail {
+    padding-top: 8px;
+    text-align: center;
+}
+
+span.person-name {
+    font-size: 125%;
+    margin-right: 1em;
+}
+
+abbr {
+    border-bottom: 1px dotted #DFAC8F;
+}
+
+li {
+    margin-bottom: 1em;
+}
+
+a.comments-icon {
+    background: url(../../site_media/img/speech_bubble.png) center right no-repeat;
+    padding-right: 16px;
+}
+
+a.comments-icon:hover {
+    color: #E45500;
+    background-color: #ccc;
+}
+
+div.datepicker {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+h3.movie-title {
+    color: white;
+    text-align: center;
+}
+
+div.movie-thumbnail, div.person-thumbnail {
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+

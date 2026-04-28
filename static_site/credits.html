@@ -1,0 +1,82 @@
+<html>
+  <head> <title> Movie Watchlist | Credits </title>
+
+   <link rel="shortcut icon" href="site_media/img/favicon.png">
+
+  <link media="screen, projection" type="text/css" href="site_media/css/blueprint/screen.css" rel="stylesheet" />
+  <link media="print" type="text/css" href="site_media/css/blueprint/print.css" rel="stylesheet" />
+  <!--[if lt IE 8]><link rel="stylesheet" href="site_media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+  <link media="screen, projection" type="text/css" href="site_media/css/blueprint_overrides.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="site_media/js/jqModal/jqModal.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="site_media/js/jqModal/jqModal_overrides.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="site_media/css/main.css" rel="stylesheet" />
+  <link media="screen, projection" type="text/css" href="site_media/css/datepicker.css" rel="stylesheet" />
+
+  
+
+  <script type="text/javascript" src="site_media/js/vendor/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="site_media/js/vendor/jquery-ui-1.8.7.min.js"></script>
+  <script type="text/javascript" src="site_media/js/jqModal/jqModal.js"></script>
+  <script type="text/javascript" src="site_media/js/main.js"></script>
+
+  
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="span-10 prepend-top">
+        <div id="header">
+          <h1><a href="index.html"> Movie Watchlist </a></h1>
+        </div>
+      </div>
+      <div class="span-8 prepend-top last">
+        <div id="top-menu">
+          <ul>
+            <li><a href="movie/index.html"> movies </a>
+            <li><a href="person/index.html"> people </a>
+            <li><a href="movie/wishlist.html"> todo </a>
+          </ul>
+        </div>
+      </div>
+
+  <div id="main-content" class="padded span-17">
+    <h2> Credits </h2>
+
+    <ul>
+      <li> This site was created with <a href="http://djangoproject.com">Django</a>, a web framework written in <a href="http://python.org">Python</a>. </li>
+      <li> This site is being hosted by <a href="http://www.ep.io">ep.io</a>, a service that provides instant deployment of Django and other Python web applications. ep.io is currently in beta. On twitter <a href="http://twitter.com/epdotio">@epdotio</a>.</li>
+      <li> Movie and cast data is taken with permission from <a href="http://themoviedb.org">themoviedb.org</a>. This site uses the <a href="http://api.themoviedb.org/2.1">TMDd API</a> wrapped in <a href="https://github.com/doganaydin/themoviedb">this Python package</a> as well as some custom modifications.
+      <li> This site uses the <a href="http://www.blueprintcss.org/">Blueprint</a> CSS framework with some modifications. </li>
+      <li> The javascript library <a href="http://jquery.com/">jQuery</a> is used sparingly. The jQuery plugin <a href="http://tablesorter.com/docs/">tablesorter</a> is used. </li>
+      <li> The version control system <a href="http://git-scm.com">git</a> is used to manage the source code for this site. All the code can be found on <a href="https://github.com/baddox/watchlist2">github</a>. </li>
+      <li> This site was developed mostly using the <a href="http://www.gnu.org/software/emacs/">GNU Emacs</a> text editor running on <a href="http://www.ubuntu.com/">Ubuntu</a>. </li>
+      <li> The development of this site would be more annoying were it not for <a href="https://github.com/django-extensions/django-extensions">django-extensions</a>, <a href="https://bitbucket.org/offline/django-annoying/wiki/Home">django-annoying</a>, and <a href="http://south.aeracode.org/">south</a>. </li>
+      <li> Also crucial to development of this site is <a href="http://getfirebug.com/">Firebug</a> and the <a href="http://code.google.com/chrome/devtools/">Chrome Developer Tools</a>. </li>
+      <li> Color ideas come from  <a href="http://www.colourlovers.com/">ColourLovers</a>. Color manipulation is done with <a href="http://www.iconico.com/colorpic/">ColorPic</a>. </li>
+      <li> The best reference for CSS selectors at a glance is the <a href="http://www.css3.info/selectors-test/">CSS3 Selectors Test</a>. <a href="http://css3please.com/"> CSS3 Please!</a> is great for fancy effects.</li>
+    </ul>
+
+  </div>
+
+  <div id="sidebar" class="padded span-4 last push-1">
+      <form method="get" action="movie/search-results.html">
+        <input type="text" name="query" />
+        <input type="submit" value="Search Movie" name="single-movie-search" />
+      </form>
+      <br />
+      <form method="get" action="person/search-results.html">
+        <input type="text" name="query" />
+        <input type="submit" value="Search Person" name="person-search" />
+      </form>
+  </div>
+
+  <div id="footer" class="padded span-17 last append-top">
+    <p class="footer-line">by <a href="http://www.tshaddox.com/?page_id=2">Thomas Shaddox</a>. <a href="credits.html">Credits</a>.</p>
+  </div>
+
+    </div>
+  </body>
+
+</html>
